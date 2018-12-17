@@ -32,7 +32,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
         <img class="img-fluid" src="img/logo.png" width="70px" height="70px">
         <a class="navbar-brand js-scroll-trigger" href="#page-top">
-          <label style="color: #FFFFFF; font-size: 60px">Pan</label><label style="color: #FFFFFF;font-size: 60px">aderia</label> <label style="color: #FFFFFF;font-size: 60px"> Lila</label>
+          <label style="font-size: 60px">Pan</label><label style="font-size: 60px">aderia</label> <label style="font-size: 60px"> Lila</label>
         </a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           Menu
@@ -48,15 +48,15 @@
             </li>
                 @auth
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ url('/home') }}" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Home</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ url('/home') }}" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Inicio</a>
                     </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ route('login') }}" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Login</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ route('login') }}" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Iniciar Sesion</a>
                     </li>
                     @if (Route::has('register'))
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ route('register') }}" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Register</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ route('register') }}" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Registrarse</a>
                     </li>
                     @endif
                 @endauth
@@ -279,18 +279,13 @@
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="img/portfolio/01-full.jpg" alt="">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Threads</li>
-                    <li>Category: Illustration</li>
-                  </ul>
+                  <h2 class="text-uppercase">Salpores</h2>
+                  <p class="item-intro text-muted">Pan Dulce.</p>
+                  <img class="img-fluid d-block mx-auto" src="img/portfolio/salpores.jpg" alt="">
+                  <p>Los salpores de arroz son muy populares en El Salvador, especialmente para disfrutarlos en el desayunito con café o leche. O a media tarde con un rico café negro. Y para que los pueda disfrutar recien hechos en la comodidad de su casa</p>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>
-                    Close Project</button>
+                    Cerrar</button>
                 </div>
               </div>
             </div>
@@ -313,18 +308,13 @@
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="img/portfolio/02-full.jpg" alt="">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Explore</li>
-                    <li>Category: Graphic Design</li>
-                  </ul>
+                  <h2 class="text-uppercase">Maria Luisa</h2>
+                  <p class="item-intro text-muted">Pan Dulce.</p>
+                  <img class="img-fluid d-block mx-auto" src="img/portfolio/marialuisa.jpg" alt="">
+                  <p>La Maria Luisa no es mas que un pan dulce tipo repostería que se hace en nuestro querido El Salvador. Es bastante popular debido a su textura suave y su relleno tan tradicional, la leche poleada.</p>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>
-                    Close Project</button>
+                    Cerrar</button>
                 </div>
               </div>
             </div>
@@ -347,18 +337,13 @@
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="img/portfolio/03-full.jpg" alt="">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Finish</li>
-                    <li>Category: Identity</li>
-                  </ul>
+                  <h2 class="text-uppercase">Milhoja</h2>
+                  <p class="item-intro text-muted">Pan Dulce.</p>
+                  <img class="img-fluid d-block mx-auto" src="img/portfolio/milhoja.jpg" alt="">
+                  <p>El milhojas es un dulce tradicional atribuido a la repostería francesa, aunque su origen sea incierto. Es un pastel de forma rectangular, que contiene merengue o crema pastelera entre dos capas de hojaldre espolvoreado con azúcar glas. Tradicionalmente, el milhojas consiste en capas de hojaldre horneadas e intercaladas con crema pastelera o nata montada.</p>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>
-                    Close Project</button>
+                    Cerrar</button>
                 </div>
               </div>
             </div>
@@ -381,18 +366,13 @@
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="img/portfolio/04-full.jpg" alt="">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Lines</li>
-                    <li>Category: Branding</li>
-                  </ul>
+                  <h2 class="text-uppercase">Pan Frances</h2>
+                  <p class="item-intro text-muted">Pan de Horno.</p>
+                  <img class="img-fluid d-block mx-auto" src="img/portfolio/panfrances.jpg" alt="">
+                  <p>Este es uno de los panes más conocidos y apreciados, no sólo en Francia. Elaborados la mayoría de las veces en forma de largas barras de pan crujiente, con una corteza dorada y apetecible. El pan francés fue elaborado por primera vez en Viena, Austria, a mediados del siglo XIX. Surgió como consecuencia de la utilización de nuevos hornos de vapor para la cocción.</p>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>
-                    Close Project</button>
+                    Cerrar</button>
                 </div>
               </div>
             </div>
@@ -415,18 +395,13 @@
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="img/portfolio/05-full.jpg" alt="">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Southwest</li>
-                    <li>Category: Website Design</li>
-                  </ul>
+                  <h2 class="text-uppercase">Cupcakes</h2>
+                  <p class="item-intro text-muted">Reposteria.</p>
+                  <img class="img-fluid d-block mx-auto" src="img/portfolio/reposteria.jpg" alt="">
+                  <p>Los cupcakes son la combinación perfecta entre un delicioso postre y dotes de creatividad; son pastelillos fáciles de digerir y de pocas calorías.Un cupcake que significa pastel de o en taza, fairy cake, patty cake, es una pequeña tarta generalmente del tamaño de una taza de café hecha para una sola persona. Su aspecto es muy parecido al de un muffin o una magdalena y al igual que los pasteles convencionales, los cupcakes son decorados ya sea con betún, azúcar glass, fondant y chispas de chocolate u otras figuras.</p>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>
-                    Close Project</button>
+                    Cerrar</button>
                 </div>
               </div>
             </div>
@@ -449,18 +424,13 @@
               <div class="col-lg-8 mx-auto">
                 <div class="modal-body">
                   <!-- Project Details Go Here -->
-                  <h2 class="text-uppercase">Project Name</h2>
-                  <p class="item-intro text-muted">Lorem ipsum dolor sit amet consectetur.</p>
-                  <img class="img-fluid d-block mx-auto" src="img/portfolio/06-full.jpg" alt="">
-                  <p>Use this area to describe your project. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Est blanditiis dolorem culpa incidunt minus dignissimos deserunt repellat aperiam quasi sunt officia expedita beatae cupiditate, maiores repudiandae, nostrum, reiciendis facere nemo!</p>
-                  <ul class="list-inline">
-                    <li>Date: January 2017</li>
-                    <li>Client: Window</li>
-                    <li>Category: Photography</li>
-                  </ul>
+                  <h2 class="text-uppercase">Peperecha</h2>
+                  <p class="item-intro text-muted">Pan Dulce.</p>
+                  <img class="img-fluid d-block mx-auto" src="img/portfolio/peperacha.jpg" alt="">
+                  <p>Las peperechas es un pan dulce muy famoso en El Salvador debido a su coloración rojo profundo que invita a degustarles cuanto antes. Este pan es bastante dulce por lo que si se degusta debe ser con una bebida que sea un poco simple o por ejemplo con café con poca azúcar. Este pan es elaborado con harina y en la parte del centro tiene una miel que es elaborada con dulce de panela derretido y en la parte de arriba colorante de color rojo con un poquito de azúcar; está compuesto de dos tapas.</p>
                   <button class="btn btn-primary" data-dismiss="modal" type="button">
                     <i class="fas fa-times"></i>
-                    Close Project</button>
+                    Cerrar</button>
                 </div>
               </div>
             </div>
