@@ -165,6 +165,7 @@ return [
         /*
          * Package Service Providers...
          */
+         Caffeinated\Shinobi\ShinobiServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -174,6 +175,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class, //laravel collective
 
     ],
 
@@ -219,6 +221,9 @@ return [
         'Route' => Illuminate\Support\Facades\Route::class,
         'Schema' => Illuminate\Support\Facades\Schema::class,
         'Session' => Illuminate\Support\Facades\Session::class,
+        'Shinobi' => Caffeinated\Shinobi\Facades\Shinobi::class,//shinobi
+        'Form' => Collective\Html\FormFacade::class,//laravel collective
+        'Html' => Collective\Html\HtmlFacade::class,//laravel collective
         'Storage' => Illuminate\Support\Facades\Storage::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
