@@ -18,3 +18,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::resource('productos','ProductoController');
+Route::resource('materiaPrima','MateriaPrimaController');
+Route::resource('usuarios','UserController');
+Route::get('/cambiarPass/{idUsuario}','UserController@editPassword')->name('cambiarPass');
+Route::post('/actualizarPassword/{idUsuario}','UserController@actualizarPassword')->name('actualizarPassword');
+Route::get('/nuestrosProductos','ProductoController@mostrarProductos')->name('mostrarProductos');
+Route::get('/agregar-carrito/{idProducto},{redir}','ProductoController@agregarACarrito')->name('agregar');
+Route::get('/disminuir-carrito/{idProducto}','ProductoController@disminuirUno')->name('disminuir');
+Route::get('/quitarProducto/{idProducto}','ProductoController@quitarProducto')->name('quitar');
+Route::get('/vercarrito','ProductoController@verCarrito')->name('verCarrito');
