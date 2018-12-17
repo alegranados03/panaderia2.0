@@ -45,7 +45,7 @@
                             </a>
                         </div>
                     <div class="panel-body" style="background-color:rgba(120,63,7, 0.32);">
-                        <form method="POST" action="{{ route('login') }}">
+                        <form method="POST" action="{{ route('login') }}" autocomplete="off">
                             @csrf
                             <div class="form-group row">
 

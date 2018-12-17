@@ -108,24 +108,21 @@
         <div class="row text-center">
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
-              <i class="fas fa-circle fa-stack-2x text-primary"></i>
-              <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+              <i class="fas fa-shopping-cart fa-stack-1x fa-inverse" style="background-image: radial-gradient(circle, #051937, #004d7a, #008793, #00bf72, #a8eb12); border-radius: 200px 200px 200px 200px;-moz-border-radius: 200px 200px 200px 200px;-webkit-border-radius: 200px 200px 200px 200px;border: 0px solid #000000; "></i>
             </span>
             <h4 class="service-heading">Producto</h4>
             <p>Ofrecemos diferentes tipos de productos en la panaderia en los cuales destacan los siguientes:<br/>1.Pan Dulce. 2.Reposteria.<br/> 3.Pan Fraces.  4.Bebidas. <br/> 5.etc.</p>
           </div>
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
-              <i class="fas fa-circle fa-stack-2x text-primary"></i>
-              <i class="fa fa-clock fa-stack-1x fa-inverse"></i>
+              <i class="fa fa-clock fa-stack-1x fa-inverse" style="background-image: radial-gradient(circle, #051937, #004d7a, #008793, #00bf72, #a8eb12); border-radius: 200px 200px 200px 200px;-moz-border-radius: 200px 200px 200px 200px;-webkit-border-radius: 200px 200px 200px 200px;border: 0px solid #000000; "></i>
             </span>
             <h4 class="service-heading">Horarios de Trabajo</h4>
             <p>Atendemos durante toda la semana a partir de las 8:00 A.M hasta las 5:00 P.M en sucursales.</p>
           </div>
           <div class="col-md-4">
             <span class="fa-stack fa-4x">
-              <i class="fas fa-circle fa-stack-2x text-primary"></i>
-              <i class="fas fa-users fa-stack-1x fa-inverse"></i>
+              <i class="fas fa-users fa-stack-1x fa-inverse" style="background-image: radial-gradient(circle, #051937, #004d7a, #008793, #00bf72, #a8eb12); border-radius: 200px 200px 200px 200px;-moz-border-radius: 200px 200px 200px 200px;-webkit-border-radius: 200px 200px 200px 200px;border: 0px solid #000000; "></i>
             </span>
             <h4 class="service-heading">Atencion al Cliente</h4>
             <p>Brindamos un servicio altamente capacitado para atender a nuestros clientes que deseen ser parte de nosotros para asi proveerles nuestro producto de calidad.</p>
