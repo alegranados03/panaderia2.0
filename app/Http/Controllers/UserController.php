@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use Caffeinated\Shinobi\Models\Role;
 use App\Http\Requests\UserRequest;
 use App\User;
+use Mail;
 
 class UserController extends Controller
 {
@@ -57,20 +58,21 @@ class UserController extends Controller
     try{
       $user = new User($request->all());
       $user->username="lamara";
-      $user->password=bcrypt(substr(microtime(),1,6));
+      $pass=substr(md5(microtime()),1,6);
+      $user->password=bcrypt($pass);
       //se modificará para hacer una contraseña aleatoria y mandar un correo con datos
       if($user->save()){
 
         $user->assignRole($request->role);
 
-        Mail::send('email.usuario',['user'=>$nuevo], function ($m) use ($nuevo,$value){
-              $m->to($nuevo->email,$value->nombre1);
+        Mail::send('administracion.email.usuario',['user'=>$user,'pass' => $pass ], function ($m) use ($user){
+              $m->to($user->email,$user->primerNombre);
               $m->subject('Contraseña y nombre de usuario');
-              $m->from('clinicayekixpaki@gmail.com','YekixPaki');
+              $m->from('panonline503@gmail.com','Panadería Lila');
                                                   });
       }
 
-     return redirect()->action('UserController@index')->with('msj','Usuario Registrado');
+     return redirect()->action('UserController@index')->with('info','Usuario Registrado')->with('tipo','success');
     }catch(Exception $e){
       return back()->with('msj2','Usuario no registrado, es posible que el username ya se encuentre registrado');
     }

@@ -8,13 +8,13 @@
 </head>
 <body>
     <h2>Usuario y contraseña</h2>
-    <h2>Clinica YekixPaki </h2>
+    <h2>Administración Panadería Lila </h2>
     <p>
-        Usuario: {{$user->name}} <br>
-        Contraseña: {{$user->password}}<br>
+        Usuario: {{$user->primerNombre}} <br>
+        Contraseña: {{$pass}}<br>
     </p>
     <strong> Almacene la clave en un lugar seguro </strong>
     <br>
-    <cite>Saludos, clinica Yekixpaki </cite>
+    <cite>Saludos, Panadería Lila </cite>
 </body>
 </html>
