@@ -35,7 +35,7 @@
 <div class="row">
 	<div class="col-md-3">
 		{{ Form::label('role','Puesto') }}
-		{{ Form::select('role',$roles,null,['class'=> 'form-control']) }}          		
+		{{ Form::select('role',$roles,null,['class'=> 'form-control']) }}
     </div>
 </div>
 <div class="row pt-3">
