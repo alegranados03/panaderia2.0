@@ -87,7 +87,7 @@ class UserController extends Controller
   public function show($id)
   {
     $user=User::findOrFail($id);
-    return view($this->path.'perfilUsuario',compact('user'));
+    return view('administracion.usuarios.show',compact('user'));
   }
 
 

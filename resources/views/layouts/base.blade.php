@@ -190,8 +190,8 @@
                 </li>
                 <!-- /.dropdown -->
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color: white; font-size: 20px">
+                        <i class="fa fa-shopping-cart fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-alerts">
                         <li>
@@ -203,48 +203,6 @@
                             </a>
                         </li>
                         <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
-                                    <span class="pull-right text-muted small">12 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-envelope fa-fw"></i> Message Sent
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-tasks fa-fw"></i> New Task
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">
-                                <div>
-                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
-                                    <span class="pull-right text-muted small">4 minutes ago</span>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="text-center" href="#">
-                                <strong>See All Alerts</strong>
-                                <i class="fa fa-angle-right"></i>
-                            </a>
-                        </li>
                     </ul>
                     <!-- /.dropdown-alerts -->
                 </li>
@@ -305,10 +263,10 @@
                             <a href="{{route('usuarios.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-user fa-fw" style="font-size: 25px"></i> Usuarios</a>
                         </li>
                         <li>
-                            <a href="forms.html" style="color: black; font-weight: bold;"><i class="fa fa-edit fa-fw"></i> Forms</a>
+                            <a href="forms.html" style="color: black; font-weight: bold;"><i class="fa fa-list fa-fw" style="font-size: 25px"></i> Productos</a>
                         </li>
                         <li>
-                            <a href="#" style="color: black; font-weight: bold;"><i class="fa fa-wrench fa-fw"></i> UI Elements<span class="fa arrow"></span></a>
+                            <a href="#" style="color: black; font-weight: bold;"><i class="fa fa-wrench fa-fw" style="font-size: 25px"></i> UI Elements<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="panels-wells.html" style="color: black; font-weight: bold;">Panels and Wells</a>
