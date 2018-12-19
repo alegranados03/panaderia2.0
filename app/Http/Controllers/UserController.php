@@ -26,7 +26,7 @@ class UserController extends Controller
   public function index(Request $request)
   {
       $users=User::all();
-      return view('usuarios.listaUsuarios',["users"=>$users]);
+      return echo "string";
     }
 
   }

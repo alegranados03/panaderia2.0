@@ -47,9 +47,26 @@
               <a class="nav-link js-scroll-trigger" href="#portfolio" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Nuestros Productos</a>
             </li>
                 @auth
+                    @role('admin')
                     <li class="nav-item">
-                        <a class="nav-link js-scroll-trigger" href="{{ url('/home') }}" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Inicio</a>
+                        <a class="nav-link js-scroll-trigger" href="{{ url('/home') }}" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Panel de Administracion</a>
                     </li>
+                    @else
+                    <li class="nav-item">
+                      <a class="nav-link js-scroll-trigger" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Inicio</a>
+                    </li>
+                    @endrole
+                    @guest
+                    @else
+                      <li class="nav-item">
+                          <a class="nav-link js-scroll-trigger" style="color: #FFFFFF;font-size: 20px;font-weight: bold;" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                        {{ __('Cerrar Sesion') }}
+                          </a>
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                          </form>
+                      </li>
+                    @endguest
                 @else
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ route('login') }}" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Iniciar Sesion</a>
