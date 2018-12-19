@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Http\Requests\ClienteRequest;
+use Caffeinated\Shinobi\Models\Role;
 
 class RegisterController extends Controller
 {
@@ -28,7 +30,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -49,9 +51,14 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+          'primerNombre' => 'required|string|max:50|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
+          'segundoNombre' => 'string|max:50|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
+          'primerApellido' => 'required|string|max:50|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
+          'segundoApellido' => 'string|max:50|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
+          'direccion'=>'string|max:100',
+          'email' => 'required|string|email|max:100|unique:users',
+          'username'=>'required|string|max:50|unique:users',
+          'password' => 'required|string|min:6|confirmed',
         ]);
     }
 
@@ -63,10 +70,18 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+      $user=User::create([
+        'primerNombre' => $data['primerNombre'],
+        'segundoNombre' => $data['segundoNombre'],
+        'primerApellido' => $data['primerApellido'],
+        'segundoApellido' => $data['segundoApellido'],
+        'username' => $data['username'],
+        'direccion'=>$data['direccion'],
+        'email' => $data['email'],
+        'password' => Hash::make($data['password']),
+      ]);
+      $rol=Role::select('id')->where('name','Cliente')->value('id');
+      $user->assignRole($rol);
+        return $user;
     }
 }
