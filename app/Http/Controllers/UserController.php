@@ -26,9 +26,7 @@ class UserController extends Controller
   public function index(Request $request)
   {
       $users=User::all();
-      return view($this->path.'inicio',compact('user'));
-    }
-
+      return view('administracion.usuarios.index');
   }
 
   /**
@@ -38,7 +36,7 @@ class UserController extends Controller
   */
   public function create()
   {
-    return view('registroUsuario');
+    return view('administracion.usuarios.create');
   }
 
   /**
@@ -87,7 +85,7 @@ class UserController extends Controller
   public function edit($id)
   { $roles=Role::all();
     $user=User::findOrFail($id);
-    return view ($this->path.'editarUsuario',compact('user','roles'));
+    return view ('administracion.usuarios.edit',compact('user','roles'));
   }
 
   /**

@@ -17,6 +17,12 @@
     <!-- MetisMenu CSS -->
     <link href="{{asset('js/vendor2/metisMenu/metisMenu.min.css')}}" rel="stylesheet">
 
+    <!-- DataTables CSS -->
+    <link href="{{asset('js/vendor2/datatables-plugins/dataTables.bootstrap.css')}}" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="{{asset('js/vendor2/datatables-responsive/dataTables.responsive.css')}}" rel="stylesheet">
+
     <!-- Custom CSS -->
     <link href="{{asset('dist/css/sb-admin-2.css')}}" rel="stylesheet">
 
@@ -48,7 +54,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html" style="color: white; font-family: serif; font-size: 50px">Panaderia Lila</a>
+                <a class="navbar-brand" href="/home" style="color: white; font-family: serif; font-size: 50px">Panaderia Lila</a>
             </div>
             <!-- /.navbar-header -->
 
@@ -277,11 +283,11 @@
             </ul>
             <!-- /.navbar-top-links -->
 
-            <div class="navbar-default sidebar" role="navigation" style="background-image: url({{asset('img/Hersheys.jpg')}});">
+            <div class="navbar-default sidebar" role="navigation" style="background-image: url({{asset('img/Hersheys.jpg')}}); margin-top: 3.1%">
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li>
-                            <a href="index.html" style="color: black; font-weight: bold;"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="/home" style="color: black; font-weight: bold;"><i class="fa fa-home fa-fw" style="font-size: 25px"></i> Inicio</a>
                         </li>
                         <li>
                             <a href="#" style="color: black; font-weight: bold;"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
@@ -296,7 +302,7 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="tables.html" style="color: black; font-weight: bold;"><i class="fa fa-table fa-fw"></i> Tables</a>
+                            <a href="{{route('usuarios.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-user fa-fw" style="font-size: 25px"></i> Usuarios</a>
                         </li>
                         <li>
                             <a href="forms.html" style="color: black; font-weight: bold;"><i class="fa fa-edit fa-fw"></i> Forms</a>
@@ -347,7 +353,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Bienvenido </h1>
+                    <h1 class="page-header">@yield('inicio')</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -372,7 +378,23 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="{{asset('dist/js/sb-admin-2.js')}}"></script>
+    <script src="{{asset('js/vendor2/datatables/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{asset('js/vendor2/datatables/js/dataTables.bootstrap.min.js')}}"></script>
+    <!-- DataTables JavaScript -->
+    <script src="{{asset('js/vendor2/datatables-responsive/dataTables.responsive.js')}}"></script>
+    <script src="{{asset('js/vendor2/datatables/js/datatables-demo.js')}}"></script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
 
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true,
+            language:{
+                url : "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json"
+            }
+        });
+    });
+    </script>
 </body>
 
 </html>

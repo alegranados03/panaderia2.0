@@ -47,11 +47,14 @@
               <a class="nav-link js-scroll-trigger" href="#portfolio" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Nuestros Productos</a>
             </li>
                 @auth
-                    @role('admin')
+                    @role('administrador')
                     <li class="nav-item">
                         <a class="nav-link js-scroll-trigger" href="{{ url('/home') }}" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Panel de Administracion</a>
                     </li>
                     @else
+                    <li class="nav-item">
+                      <a class="nav-link js-scroll-trigger" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">{{Auth::user()->primerNombre." ".Auth::user()->primerApellido}}</a>
+                    </li>
                     <li class="nav-item">
                       <a class="nav-link js-scroll-trigger" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Inicio</a>
                     </li>
