@@ -25,11 +25,6 @@ class UserController extends Controller
   }
   public function index(Request $request)
   {
-    Mail::send('email.paciente',['user'=>$nuevo], function ($m) use ($nuevo,$value){
-                                                $m->to($nuevo->email,$value->nombre1);
-                                                $m->subject('Contraseña y nombre de usuario');
-                                                $m->from('clinicayekixpaki@gmail.com','YekixPaki');
-                                                });
       $users=User::all();
       return view('administracion.usuarios.index');
   }
