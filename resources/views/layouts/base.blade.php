@@ -260,16 +260,14 @@
                             @endif
                         @else
                             <li>
-                                <div>
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();" style="color: black;">
+                                                     document.getElementById('logout-form').submit();" style="color: black;font-size: 20px">
                                         {{ __('Logout') }}
                                     </a>
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                </div>
                             </li>
                         @endguest
                     </ul>
