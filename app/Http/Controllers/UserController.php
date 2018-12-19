@@ -98,12 +98,16 @@ class UserController extends Controller
   * @return \Illuminate\Http\Response
   */
   public function edit($id)
-  { 
+  {
+    $Rolu=Role::join('role_user', 'roles.id', '=', 'role_user.role_id')->where('role_user.id','=',$id)
+    ->select('roles.id')->get();
+    foreach($Rolu as $rol){
+      $idRol=$rol->id;
+    }
   $user=User::findOrFail($id);
-  $roles=Role::pluck('name','id');
-    
-      
-   return view ('administracion.usuarios.edit',compact('user','roles'));
+  $roles=Role::pluck('name','id')->toArray();
+  
+   return view ('administracion.usuarios.edit',compact('user','roles','idRol'));
   }
 
   /**
