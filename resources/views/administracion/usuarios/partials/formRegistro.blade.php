@@ -32,6 +32,12 @@
     </div>       		 
 </div>
 <br/>
+<div class="row">
+	<div class="col-md-3">   
+		{{ Form::label('role','Puesto') }}
+		{{ Form::select('role',[],null,['class'=> 'form-control']) }}          		
+    </div>
+</div>
 <div class="row pt-3">
 	<div class="col-md-4">
 		*Campos obligatorios
