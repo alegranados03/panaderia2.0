@@ -12,7 +12,11 @@
             <td>Trident</td>
             <td>Internet Explorer 4.0</td>
             <td>Win 95+</td>
-            <td class="center">4</td>
+            <td class="center">
+                <a class="btn btn-info">Ver</a>
+                <a class="btn btn-primary">Editar</a>
+                <a class="btn btn-danger">Deshabilitar</a>
+            </td>
         </tr>
     </tbody>
 </table>
