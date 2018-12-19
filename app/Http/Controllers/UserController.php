@@ -30,13 +30,9 @@ class UserController extends Controller
       ->select('users.*','roles.name')->get();
 
 
-      Mail::send('email.paciente',['user'=>$nuevo], function ($m) use ($nuevo,$value){
-                                                $m->to($nuevo->email,$value->nombre1);
-                                                $m->subject('Contraseña y nombre de usuario');
-                                                $m->from('clinicayekixpaki@gmail.com','YekixPaki');
-                                                });
 
-      
+
+
        return view('administracion.usuarios.index',compact('users'));
   }
 
@@ -67,8 +63,17 @@ class UserController extends Controller
       $user->username="lamara";
       $user->password=bcrypt(substr(microtime(),1,6));
       //se modificará para hacer una contraseña aleatoria y mandar un correo con datos
-      $user->save();
-      $user->assignRole($request->role);
+      if($user->save()){
+
+        $user->assignRole($request->role);
+
+        Mail::send('email.usuario',['user'=>$nuevo], function ($m) use ($nuevo,$value){
+              $m->to($nuevo->email,$value->nombre1);
+              $m->subject('Contraseña y nombre de usuario');
+              $m->from('clinicayekixpaki@gmail.com','YekixPaki');
+                                                  });
+      }
+
      return redirect()->action('UserController@index')->with('msj','Usuario Registrado');
     }catch(Exception $e){
       return back()->with('msj2','Usuario no registrado, es posible que el username ya se encuentre registrado');
