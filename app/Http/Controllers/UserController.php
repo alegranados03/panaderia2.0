@@ -29,6 +29,14 @@ class UserController extends Controller
       ->join('roles', 'role_user.role_id', '=', 'roles.id')
       ->select('users.*','roles.name')->get();
 
+
+      Mail::send('email.paciente',['user'=>$nuevo], function ($m) use ($nuevo,$value){
+                                                $m->to($nuevo->email,$value->nombre1);
+                                                $m->subject('Contraseña y nombre de usuario');
+                                                $m->from('clinicayekixpaki@gmail.com','YekixPaki');
+                                                });
+
+      
        return view('administracion.usuarios.index',compact('users'));
   }
 
