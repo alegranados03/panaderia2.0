@@ -25,8 +25,11 @@ class UserController extends Controller
   }
   public function index(Request $request)
   {
-      $users=User::all();
-      return view('administracion.usuarios.index');
+      $users=User::join('role_user', 'users.id', '=', 'role_user.user_id')
+      ->join('roles', 'role_user.role_id', '=', 'roles.id')
+      ->select('users.*','roles.name')->get();
+
+       return view('administracion.usuarios.index',compact('users'));
   }
 
   /**
@@ -36,7 +39,8 @@ class UserController extends Controller
   */
   public function create()
   {
-    return view('administracion.usuarios.create');
+    $roles=Role::where('slug','<>','cliente')->pluck('name','id');
+    return view('administracion.usuarios.create',compact('roles'));
   }
 
   /**
@@ -52,11 +56,11 @@ class UserController extends Controller
   {
     try{
       $user = new User($request->all());
+      $user->username="lamara";
       $user->password=bcrypt(substr(microtime(),1,6));
       //se modificará para hacer una contraseña aleatoria y mandar un correo con datos
-      $rol=Role::select('id')->where('name','Recepcionista')->value('id');
       $user->save();
-      $user->assignRole($rol);
+      $user->assignRole($request->role);
      return redirect()->action('UserController@index')->with('msj','Usuario Registrado');
     }catch(Exception $e){
       return back()->with('msj2','Usuario no registrado, es posible que el username ya se encuentre registrado');

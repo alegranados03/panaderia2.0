@@ -30,7 +30,7 @@ class UserRequest extends FormRequest
           'segundoApellido' => 'string|max:50|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
           'direccion'=>'string|max:100',
           'email' => 'string|email|max:100|unique:users',
-          'username'=>'required|string|max:50|unique:users',
+          'username'=>'string|max:50|unique:users',
 
         ];
     }

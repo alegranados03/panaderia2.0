@@ -11,8 +11,8 @@ class rolDefaultSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('roles')->insert(['name'=>'Administrador','slug'=>'Administrador','special'=>'all-access']);
-      DB::table('roles')->insert(['name'=>'Recepcionista','slug'=>'Recepcionista']);
-      DB::table('roles')->insert(['name'=>'Cliente','slug'=>'Cliente']);
+      DB::table('roles')->insert(['name'=>'Administrador','slug'=>'administrador','special'=>'all-access']);
+      DB::table('roles')->insert(['name'=>'Empleado','slug'=>'empleado']);
+      DB::table('roles')->insert(['name'=>'Cliente','slug'=>'cliente']);
     }
 }

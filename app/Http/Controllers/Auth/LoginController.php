@@ -40,4 +40,20 @@ class LoginController extends Controller
     public function username(){
       return 'username';
     }
+
+    public function redirectPath(){
+
+      if(auth()->user()->isAdministrador()){
+      //  return '/administrador';
+
+      }if(auth()->user()->isEmpleado()){
+      //  return '/inicio';
+
+      }else{
+      //  return '/home';
+      }
+
+      return '/home';
+    }
+
 }
