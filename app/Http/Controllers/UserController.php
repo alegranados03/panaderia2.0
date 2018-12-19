@@ -99,14 +99,14 @@ class UserController extends Controller
   */
   public function edit($id)
   {
-    $Rolu=Role::join('role_user', 'roles.id', '=', 'role_user.role_id')->where('role_user.id','=',$id)
+    $Rolu=Role::join('role_user', 'roles.id', '=', 'role_user.role_id')->where('role_user.user_id','=',$id)
     ->select('roles.id')->get();
     foreach($Rolu as $rol){
       $idRol=$rol->id;
     }
   $user=User::findOrFail($id);
   $roles=Role::pluck('name','id')->toArray();
-  
+
    return view ('administracion.usuarios.edit',compact('user','roles','idRol'));
   }
 
@@ -134,8 +134,8 @@ class UserController extends Controller
         $user->primerApellido=$request->primerApellido;
         $user->segundoApellido=$request->segundoApellido;
         $user->save();
-        $user->roles()->sync($request->get('roles'));
-      return redirect()->action('UserController@show',['id' =>$user->id])->with('msj','#');
+        $user->roles()->sync($request->get('role'));
+      return redirect()->action('UserController@index')->with('msj','#');
       }catch(Exception $e){
         return back()->with('msj2','Usuario no editado,revise los datos proporcionados');
       }
