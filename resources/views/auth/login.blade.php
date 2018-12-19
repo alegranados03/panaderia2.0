@@ -50,11 +50,11 @@
                             <div class="form-group row">
 
                                 <div class="col-md-12">
-                                    <input id="email" type="email" placeholder="E-Mail" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                    <input id="username" type="text" placeholder="Nombre de Usuario" class="form-control{{ $errors->has('username') ? ' is-invalid' : '' }}" name="username" value="{{ old('username') }}" required autofocus>
 
-                                    @if ($errors->has('email'))
+                                    @if ($errors->has('username'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('email') }}</strong>
+                                            <strong>{{ $errors->first('username') }}</strong>
                                         </span>
                                     @endif
                                 </div>
@@ -108,5 +108,3 @@
 </body>
 
 </html>
-
-

@@ -17,7 +17,7 @@ class UserController extends Controller
   *
   * @return \Illuminate\Http\Response
   */
-  private $path = 'usuarios/';
+  private $path = 'administracion/usuarios/';
 
   //Referencia al middleware
   public function __construct(){
@@ -26,7 +26,7 @@ class UserController extends Controller
   public function index(Request $request)
   {
       $users=User::all();
-      return echo "string";
+      return view($this->path.'inicio',compact('user'));
     }
 
   }
@@ -38,7 +38,7 @@ class UserController extends Controller
   */
   public function create()
   {
-    return view('usuarios.registroUsuario');
+    return view('registroUsuario');
   }
 
   /**
