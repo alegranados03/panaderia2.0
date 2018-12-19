@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="col-md-3">
 		{{ Form::label('primerNombre','Primer Nombre') }}
-		{{ Form::text('primerNombre',null,['class'=> 'form-control','required']) }}
+		{{ Form::text('primerNombre',null,['class'=> 'form-control','required', 'autofocus']) }}
     </div>
    	<div class="col-md-3">
 		{{ Form::label('segundoNombre','Segundo Nombre') }}
@@ -26,17 +26,25 @@
 		{{ Form::label('email','E-Mail') }}
 		{{ Form::text('email',null,['class'=> 'form-control']) }}
     </div>
-	<div class="col-md-6">
-		{{ Form::label('direccion','Direccion') }}
-		{{ Form::text('direccion',null,['class'=> 'form-control','required']) }}
+	<div class="col-md-3">
+		{{ Form::label('username','Usuario') }}
+		{{ Form::text('username',null,['class'=> 'form-control','required']) }}
+    </div>
+    <div class="col-md-3">
+		{{ Form::label('role','Puesto') }}
+		{{ Form::select('role',$roles,null,['class'=> 'form-control', 'placeholder' => 'Seleccionar Puesto']) }}
     </div>
 </div>
 <br/>
 <div class="row">
-	<div class="col-md-3">
-		{{ Form::label('role','Puesto') }}
-		{{ Form::select('role',$roles,null,['class'=> 'form-control']) }}
+	<div class="col-md-12">
+		{{ Form::label('direccion','Direccion') }}
+		{{ Form::textarea('direccion',null,['class'=> 'form-control','required', 'style' => 'resize:none']) }}
     </div>
+</div>
+<br/>
+<div class="row">
+
 </div>
 <div class="row pt-3">
 	<div class="col-md-4">

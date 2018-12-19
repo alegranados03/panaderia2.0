@@ -29,10 +29,6 @@ class UserController extends Controller
       ->join('roles', 'role_user.role_id', '=', 'roles.id')
       ->select('users.*','roles.name')->get();
 
-
-
-
-
        return view('administracion.usuarios.index',compact('users'));
   }
 
@@ -100,9 +96,12 @@ class UserController extends Controller
   * @return \Illuminate\Http\Response
   */
   public function edit($id)
-  { $roles=Role::all();
-    $user=User::findOrFail($id);
-    return view ('administracion.usuarios.edit',compact('user','roles'));
+  { 
+  $user=User::findOrFail($id);
+  $roles=Role::pluck('name','id');
+    
+      
+   return view ('administracion.usuarios.edit',compact('user','roles'));
   }
 
   /**
