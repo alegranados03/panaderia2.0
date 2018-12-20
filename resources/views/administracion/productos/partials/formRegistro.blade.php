@@ -8,7 +8,7 @@
 <div class="row">
 <div class="col-md-6">
 	{{ Form::label('precio','Precio') }}
-	{{ Form::text('precio',null,['class'=> 'form-control','required', 'autofocus']) }}
+	{{ Form::number('precio',null,['class'=> 'form-control','required', 'autofocus','step' => '0.01']) }}
 	</div>
 	</div>
 	<div class="row">
