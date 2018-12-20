@@ -248,22 +248,19 @@
                             <a href="/home" style="color: black; font-weight: bold;"><i class="fa fa-home fa-fw" style="font-size: 25px"></i> Inicio</a>
                         </li>
                         <li>
-                            <a href="#" style="color: black; font-weight: bold;"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
+                            <a href="#" style="color: black; font-weight: bold;"><i class="fa fa-cogs" style="font-size: 25px"></i> Gestionar Producto<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html" style="color: black; font-weight: bold;">Flot Charts</a>
+                                    <a href="{{route('productos.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-list-alt fa-fw" style="font-size: 25px"></i> Categoria</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html" style="color: black; font-weight: bold;">Morris.js Charts</a>
+                                    <a href="{{route('productos.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-list fa-fw" style="font-size: 25px"></i> Productos</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
                             <a href="{{route('usuarios.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-user fa-fw" style="font-size: 25px"></i> Usuarios</a>
-                        </li>
-                        <li>
-                            <a href="{{route('productos.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-list fa-fw" style="font-size: 25px"></i> Productos</a>
                         </li>
                         <li>
                             <a href="#" style="color: black; font-weight: bold;"><i class="fa fa-wrench fa-fw" style="font-size: 25px"></i> UI Elements<span class="fa arrow"></span></a>
