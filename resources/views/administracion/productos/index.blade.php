@@ -25,4 +25,5 @@ Productos
             <div class="panel-body">
             	@include('administracion.Productos.tablaProductos')
             </div>
+        </div>
 @endsection
