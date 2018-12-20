@@ -1,10 +1,9 @@
 <div class="row">
-	<div class="row">
 	<div class="col-md-6">
 		{{ Form::label('nombre_producto','Nombre del Producto') }}
 		{{ Form::text('nombre_producto',null,['class'=> 'form-control','required', 'autofocus']) }}
     </div>
-		</div>
+</div>
 
 <div class="row">
 <div class="col-md-6">

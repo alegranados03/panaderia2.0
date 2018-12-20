@@ -56,7 +56,7 @@
                       <a class="nav-link js-scroll-trigger" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">{{Auth::user()->primerNombre." ".Auth::user()->primerApellido}}</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link js-scroll-trigger" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Inicio</a>
+                      <a class="nav-link js-scroll-trigger" href="{{ url('/tienda') }}" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Inicio</a>
                     </li>
                     @endrole
                     @guest

@@ -16,7 +16,7 @@ Productos
                 	</div>
                 	<div class="col-md-2">
                 		<a class="btn btn-primary" href="{{route('productos.create')}}">
-                			<i class="fa fa-user-plus"></i> Crear Producto
+                			<i class="fa fa-list"> <i class="fa fa-plus" style="font-size: 10px"></i></i> Crear Producto
                 		</a>
                 	</div>
                 </div>
