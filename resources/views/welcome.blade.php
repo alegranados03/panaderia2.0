@@ -46,6 +46,9 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#portfolio" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Nuestros Productos</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link js-scroll-trigger" href="{{ url('/tienda') }}" style="color: #FFFFFF;font-size: 20px;font-weight: bold;">Tienda</a>
+            </li>
                 @auth
                     @role('administrador')
                     <li class="nav-item">

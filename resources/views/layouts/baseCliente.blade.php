@@ -75,14 +75,14 @@
         <div class="row">
 
           <!-- Logo -->
-          <div class="col-lg-2 col-sm-3 col-3 order-1">
+          <div class="col-lg-3 col-sm-3 col-3 order-1">
             <div class="logo_container">
-              <div class="logo"><a href="#">OneTech</a></div>
+              <div class="logo"><a href="{{ url('/') }}">Panaderia Lila</a></div>
             </div>
           </div>
 
           <!-- Search -->
-          <div class="col-lg-6 col-12 order-lg-2 order-3 text-lg-left text-right">
+          <div class="col-lg-5 col-12 order-lg-2 order-3 text-lg-left text-right">
             <div class="header_search">
               <div class="header_search_content">
                 <div class="header_search_form_container">
@@ -90,7 +90,7 @@
                     <input type="search" required="required" class="header_search_input" placeholder="Search for products...">
                     <div class="custom_dropdown">
                       <div class="custom_dropdown_list">
-                        <span class="custom_dropdown_placeholder clc">All Categories</span>
+                        <span class="custom_dropdown_placeholder clc">Categorias</span>
                         <i class="fas fa-chevron-down"></i>
                         <ul class="custom_list clc">
                           <li><a class="clc" href="#">All Categories</a></li>
@@ -115,7 +115,7 @@
               <div class="wishlist d-flex flex-row align-items-center justify-content-end">
                 <div class="wishlist_icon"><img src="{{asset('OneTech/images/heart.png')}}" alt=""></div>
                 <div class="wishlist_content">
-                  <div class="wishlist_text"><a href="#">Wishlist</a></div>
+                  <div class="wishlist_text"><a href="#">Lista de Deseos</a></div>
                   <div class="wishlist_count">115</div>
                 </div>
               </div>
@@ -128,7 +128,7 @@
                     <div class="cart_count"><span>10</span></div>
                   </div>
                   <div class="cart_content">
-                    <div class="cart_text"><a href="#">Cart</a></div>
+                    <div class="cart_text"><a href="#">Carro</a></div>
                     <div class="cart_price">$85</div>
                   </div>
                 </div>
@@ -153,7 +153,7 @@
               <div class="cat_menu_container">
                 <div class="cat_menu_title d-flex flex-row align-items-center justify-content-start">
                   <div class="cat_burger"><span></span><span></span><span></span></div>
-                  <div class="cat_menu_text">categories</div>
+                  <div class="cat_menu_text">categorias</div>
                 </div>
 
                 <ul class="cat_menu">
@@ -189,7 +189,7 @@
 
               <div class="main_nav_menu ml-auto">
                 <ul class="standard_dropdown main_nav_dropdown">
-                  <li><a href="index.html">Home<i class="fas fa-chevron-down"></i></a></li>
+                  <li><a href="{{ url('/tienda') }}">Home<i class="fas fa-chevron-down"></i></a></li>
                   <li class="hassubs">
                     <a href="#">Super Deals<i class="fas fa-chevron-down"></i></a>
                     <ul>
