@@ -21,15 +21,20 @@ class ProductoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request){
-        if($request){
-        $query=trim($request->get('busqueda'));
-        $productos=Producto::where('nombre_producto','LIKE','%'.$query.'%')
-        ->orderBy('id','DESC')
-        ->paginate(7);
-        return view('producto.listaProductos',["productos"=>$productos]);
-        }
+
+    private $path = 'administracion/productos/';
+
+    //Referencia al middleware
+    public function __construct(){
+      //$this->middleware('auth');
     }
+
+
+    public function index(Request $request){
+        $productos=Producto::all();
+        return view($this->path.'index',["productos"=>$productos]);
+        }
+
 
     /**
      * Show the form for creating a new resource.
@@ -38,7 +43,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        return view('producto.registroProducto');
+        return view($this->path.'create');
     }
 
     /**
@@ -72,7 +77,7 @@ class ProductoController extends Controller
      */
     public function show(Producto $producto)
     {
-      return view('producto.perfilProducto',compact('producto'));
+      return view($this->path.'show',compact('producto'));
     }
 
     /**
@@ -83,7 +88,7 @@ class ProductoController extends Controller
      */
     public function edit(Producto $producto)
     {
-    return view('producto.editarProducto',compact('producto'));
+    return view($this->path.'edit',compact('producto'));
     }
 
     /**
@@ -97,8 +102,9 @@ class ProductoController extends Controller
     {
       try{
       $producto->nombre_producto=$request->nombre_producto;
-      $producto->tipoProducto=$request->tipo;
+      $producto->tipoProducto=$request->tipoProducto;
       $producto->precio=$request->precio;
+      $producto->descripcion=$request->descripcion;
       if($request->file('imagen')){
       $direccion=Storage::disk('public')->put('imagenes',$request->file('imagen'));
       $producto->fill(['imagen'=>asset($direccion)])->save();}else{

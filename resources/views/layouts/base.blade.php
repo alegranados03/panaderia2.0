@@ -263,7 +263,7 @@
                             <a href="{{route('usuarios.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-user fa-fw" style="font-size: 25px"></i> Usuarios</a>
                         </li>
                         <li>
-                            <a href="forms.html" style="color: black; font-weight: bold;"><i class="fa fa-list fa-fw" style="font-size: 25px"></i> Productos</a>
+                            <a href="{{route('productos.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-list fa-fw" style="font-size: 25px"></i> Productos</a>
                         </li>
                         <li>
                             <a href="#" style="color: black; font-weight: bold;"><i class="fa fa-wrench fa-fw" style="font-size: 25px"></i> UI Elements<span class="fa arrow"></span></a>

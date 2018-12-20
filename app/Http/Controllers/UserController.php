@@ -30,7 +30,7 @@ class UserController extends Controller
       ->join('roles', 'role_user.role_id', '=', 'roles.id')
       ->select('users.*','roles.name')->get();
 
-       return view('administracion.usuarios.index',compact('users'));
+       return view($this->path.'index',compact('users'));
   }
 
   /**
@@ -41,7 +41,7 @@ class UserController extends Controller
   public function create()
   {
     $roles=Role::where('slug','<>','cliente')->pluck('name','id');
-    return view('administracion.usuarios.create',compact('roles'));
+    return view($this->path.'create',compact('roles'));
   }
 
   /**
@@ -57,7 +57,6 @@ class UserController extends Controller
   {
     try{
       $user = new User($request->all());
-      $user->username="lamara";
       $pass=substr(md5(microtime()),1,6);
       $user->password=bcrypt($pass);
       //se modificará para hacer una contraseña aleatoria y mandar un correo con datos
@@ -87,7 +86,7 @@ class UserController extends Controller
   public function show($id)
   {
     $user=User::findOrFail($id);
-    return view('administracion.usuarios.show',compact('user'));
+    return view($this->path.'show',compact('user'));
   }
 
 
@@ -107,7 +106,7 @@ class UserController extends Controller
   $user=User::findOrFail($id);
   $roles=Role::pluck('name','id')->toArray();
 
-   return view ('administracion.usuarios.edit',compact('user','roles','idRol'));
+   return view ($this->path.'edit',compact('user','roles','idRol'));
   }
 
   /**
