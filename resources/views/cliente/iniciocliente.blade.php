@@ -13,6 +13,7 @@ Tienda
 <link rel="stylesheet" type="text/css" href="{{asset('OneTech/plugins/slick-1.8.0/slick.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('OneTech/styles/main_styles.css')}}">
 <link rel="stylesheet" type="text/css" href="{{asset('OneTech/styles/responsive.css')}}">
+
 @endsection
 @section('content')
 
@@ -1716,6 +1717,4 @@ Tienda
 <script src="{{asset('OneTech/plugins/slick-1.8.0/slick.js')}}"></script>
 <script src="{{asset('OneTech/plugins/easing/easing.js')}}"></script>
 <script src="{{asset('OneTech/js/custom.js')}}"></script>
-
-<!-- <script src="{{asset('OneTech/js/product_custom.js')}}"></script> -->
 @endsection

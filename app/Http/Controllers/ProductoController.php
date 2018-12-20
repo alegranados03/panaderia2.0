@@ -183,4 +183,9 @@ class ProductoController extends Controller
       $request->session()->put('carrito',$carrito);
         return redirect()->action('ProductoController@verCarrito')->with('msj',$producto->nombre_producto.'Editado Exitosamente');
     }
+
+    public function productoDetalle(){
+
+      return view('cliente.detalleProducto');
+    }
 }

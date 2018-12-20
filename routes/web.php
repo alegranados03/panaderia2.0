@@ -18,10 +18,12 @@ Route::get('/', function () {
 Route::get('/tienda', function () {
     return view('cliente.iniciocliente');
 });
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('productos','ProductoController');
+Route::get('/detalleProducto', 'ProductoController@productoDetalle')->name('productoDetalle');
 Route::resource('materiaPrima','MateriaPrimaController');
 Route::resource('usuarios','UserController');
 Route::get('/cambiarPass/{idUsuario}','UserController@editPassword')->name('cambiarPass');
