@@ -251,7 +251,7 @@
                             <a href="#" style="color: black; font-weight: bold;"><i class="fa fa-cogs" style="font-size: 25px"></i> Gestionar Producto<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="{{route('productos.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-list-alt fa-fw" style="font-size: 25px"></i> Categoria</a>
+                                    <a href="{{route('categorias.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-list-alt fa-fw" style="font-size: 25px"></i> Categoria</a>
                                 </li>
                                 <li>
                                     <a href="{{route('productos.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-list fa-fw" style="font-size: 25px"></i> Productos</a>
