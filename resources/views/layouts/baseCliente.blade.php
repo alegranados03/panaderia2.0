@@ -8,8 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 @yield('links')
 
-<!--<link rel="stylesheet" type="text/css" href="{{asset('OneTech/styles/product_styles.css')}}">-->
-<!--<link rel="stylesheet" type="text/css" href="{{asset('OneTech/styles/product_responsive.css')}}">-->
+
  
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
@@ -29,8 +28,8 @@
       <div class="container">
         <div class="row">
           <div class="col d-flex flex-row">
-            <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('OneTech/images/phone.png')}}" alt=""></div>+38 068 005 3570</div>
-            <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('OneTech/images/mail.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
+            <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('OneTech/images/phone.png')}}" alt=""></div>+503 7928-5167</div>
+            <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('OneTech/images/mail.png')}}" alt=""></div><a href="mailto:panonline503@gmail.com">panonline503@gmail.com</a></div>
             <div class="top_bar_content ml-auto">
               <div class="top_bar_menu">
                 <ul class="standard_dropdown top_bar_dropdown">
@@ -54,8 +53,45 @@
               </div>
               <div class="top_bar_user">
                 <div class="user_icon"><img src="{{asset('OneTech/images/user.svg')}}" alt=""></div>
-                <div><a href="#">Register</a></div>
-                <div><a href="#">Sign in</a></div>
+                @auth
+                    @role('administrador')
+                    <div>
+                        <a href="{{ url('/home') }}" style="color: #000000">Panel de Administracion</a>
+                    </div>
+                    @else
+                    <div>
+                      <a style="color: #000000">{{Auth::user()->primerNombre." ".Auth::user()->primerApellido}}</a>
+                    </div>
+                    @endrole
+                    @guest
+                    @else
+                      <div>
+                          <a style="color: #000000" href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+                                        {{ __('Cerrar Sesion') }}
+                          </a>
+                          <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                          </form>
+                      </div>
+                    @endguest
+                @else
+                    <div>
+                        <a href="{{ route('login') }}" style="color: #000000">Iniciar Sesion</a>
+                    </div>
+                    @if (Route::has('register'))
+                    <div>
+                        <a href="{{ route('register') }}" style="color: #000000">Registrarse</a>
+                    </div>
+                    @endif
+                @endauth
+
+
+
+
+
+
+
+
               </div>
             </div>
           </div>
