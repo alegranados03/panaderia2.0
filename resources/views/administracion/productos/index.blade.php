@@ -23,7 +23,7 @@ Productos
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-            	@include('administracion.Productos.tablaProductos')
+            	@include('administracion.productos.tablaProductos')
             </div>
         </div>
 @endsection

@@ -7,9 +7,6 @@
 <meta name="description" content="OneTech shop project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 @yield('links')
-
-
-
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 </head>
@@ -34,19 +31,10 @@
               <div class="top_bar_menu">
                 <ul class="standard_dropdown top_bar_dropdown">
                   <li>
-                    <a href="#">English<i class="fas fa-chevron-down"></i></a>
+                    <a href="#">Configuracion<i class="fa fa-cogs"></i></a>
                     <ul>
-                      <li><a href="#">Italian</a></li>
-                      <li><a href="#">Spanish</a></li>
-                      <li><a href="#">Japanese</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <a href="#">$ US dollar<i class="fas fa-chevron-down"></i></a>
-                    <ul>
-                      <li><a href="#">EUR Euro</a></li>
-                      <li><a href="#">GBP British Pound</a></li>
-                      <li><a href="#">JPY Japanese Yen</a></li>
+                      <li><a href="{{route('miperfil')}}">Perfil de Usuario</a></li>
+                      <li><a href="{{route('misordenes')}}">Ordenes Pendientes</a></li>
                     </ul>
                   </li>
                 </ul>

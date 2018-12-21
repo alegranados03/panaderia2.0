@@ -99,4 +99,14 @@ class TiendaController extends Controller
     {
         //
     }
+
+    public function miperfil(){
+        $categorias = Categoria::all();
+        return view('cliente.miperfil',compact('categorias'));
+    }
+
+    public function misordenes(){
+        $categorias = Categoria::all();
+        return view('cliente.ordenpendiente',compact('categorias'));
+    }
 }

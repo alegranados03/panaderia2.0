@@ -33,6 +33,8 @@ Route::get('/nuestrosProductos','ProductoController@mostrarCategorias')->name('m
 
 
 Route::resource('tienda','TiendaController');
+Route::get('miperfil','TiendaController@miperfil')->name('miperfil');
+Route::get('misordenes', 'TiendaController@misordenes')->name('misordenes');
 Route::resource('materiaPrima','MateriaPrimaController');
 
 
