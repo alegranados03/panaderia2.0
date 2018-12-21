@@ -9,7 +9,7 @@
 @yield('links')
 
 
- 
+
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
 </head>
@@ -17,9 +17,9 @@
 <body>
 
 <div class="super_container">
-  
+
   <!-- Header -->
-  
+
   <header class="header">
 
     <!-- Top Bar -->
@@ -96,7 +96,7 @@
             </div>
           </div>
         </div>
-      </div>    
+      </div>
     </div>
 
     <!-- Header Main -->
@@ -156,11 +156,11 @@
                 <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                   <div class="cart_icon">
                     <img src="{{asset('OneTech/images/cart.png')}}" alt="">
-                    <div class="cart_count"><span>10</span></div>
+                    <div class="cart_count"><span id='conteo'>{{Session::has('carrito') ? Session::get('carrito')->cantidadTotal : '0'}}</span></div>
                   </div>
                   <div class="cart_content">
                     <div class="cart_text"><a href="#">Carro</a></div>
-                    <div class="cart_price">$85</div>
+                    <div class="cart_price" id='precio'>{{Session::has('carrito') ? '$'.Session::get('carrito')->precioTotal : '$0'}}</div>
                   </div>
                 </div>
               </div>
@@ -169,14 +169,14 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Main Navigation -->
 
     <nav class="main_nav">
       <div class="container">
         <div class="row">
           <div class="col">
-            
+
             <div class="main_nav_content d-flex flex-row">
 
               <!-- Categories Menu -->
@@ -188,31 +188,9 @@
                 </div>
 
                 <ul class="cat_menu">
-                  <li><a href="#">Computers & Laptops <i class="fas fa-chevron-right ml-auto"></i></a></li>
-                  <li><a href="#">Cameras & Photos<i class="fas fa-chevron-right"></i></a></li>
-                  <li class="hassubs">
-                    <a href="#">Hardware<i class="fas fa-chevron-right"></i></a>
-                    <ul>
-                      <li class="hassubs">
-                        <a href="#">Menu Item<i class="fas fa-chevron-right"></i></a>
-                        <ul>
-                          <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                          <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                          <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                          <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                        </ul>
-                      </li>
-                      <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                      <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                      <li><a href="#">Menu Item<i class="fas fa-chevron-right"></i></a></li>
-                    </ul>
-                  </li>
-                  <li><a href="#">Smartphones & Tablets<i class="fas fa-chevron-right"></i></a></li>
-                  <li><a href="#">TV & Audio<i class="fas fa-chevron-right"></i></a></li>
-                  <li><a href="#">Gadgets<i class="fas fa-chevron-right"></i></a></li>
-                  <li><a href="#">Car Electronics<i class="fas fa-chevron-right"></i></a></li>
-                  <li><a href="#">Video Games & Consoles<i class="fas fa-chevron-right"></i></a></li>
-                  <li><a href="#">Accessories<i class="fas fa-chevron-right"></i></a></li>
+                  @foreach($categorias as $cat)
+                  <li><a href="{{route('mostrarProductos',['id'=>$cat->id])}}">{{$cat->nombre_categoria}} <i class="fas fa-chevron-right ml-auto"></i></a></li>
+                  @endforeach
                 </ul>
               </div>
 
@@ -286,16 +264,16 @@
         </div>
       </div>
     </nav>
-    
+
     <!-- Menu -->
 
     <div class="page_menu">
       <div class="container">
         <div class="row">
           <div class="col">
-            
+
             <div class="page_menu_content">
-              
+
               <div class="page_menu_search">
                 <form action="#">
                   <input type="search" required="required" class="page_menu_search_input" placeholder="Search for products...">
@@ -362,7 +340,7 @@
                 <li class="page_menu_item"><a href="blog.html">blog<i class="fa fa-angle-down"></i></a></li>
                 <li class="page_menu_item"><a href="contact.html">contact<i class="fa fa-angle-down"></i></a></li>
               </ul>
-              
+
               <div class="menu_contact">
                 <div class="menu_contact_item"><div class="menu_contact_icon"><img src="{{asset('OneTech/images/phone_white.png')}}" alt=""></div>+38 068 005 3570</div>
                 <div class="menu_contact_item"><div class="menu_contact_icon"><img src="{{asset('OneTech/images/mail_white.png')}}" alt=""></div><a href="mailto:fastsales@gmail.com">fastsales@gmail.com</a></div>
@@ -374,7 +352,7 @@
     </div>
 
   </header>
-  
+
   <!-- Banner -->
   @yield('content')
   <!-- Footer -->
@@ -460,7 +438,7 @@
     <div class="container">
       <div class="row">
         <div class="col">
-          
+
           <div class="copyright_container d-flex flex-sm-row flex-column align-items-center justify-content-start">
             <div class="copyright_content"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>

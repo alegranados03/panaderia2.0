@@ -27,9 +27,10 @@ Detalle Producto
 			</div>
 			</div>
 		<div class="row">
-		<div class="col-md-6">
+		<div class="col-md-12">
 			{{ Form::label('imagen','Imagen del Producto') }}
-			<img src="{{$producto->imagen}}">
+			<br/>
+			<img src="{{$producto->imagen}}" height="300px" width="300px">
 			</div>
 			</div>
 	<br/>

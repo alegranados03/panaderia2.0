@@ -9,15 +9,15 @@ Usuarios
             <div class="panel-heading" align="center" style="font-size: 30px;font-weight: bold;">
                 <div class="row">
                 	<div class="col-md-12">
-                	    Editar Producto
+                	    Editar Categoría
                 	</div>
                 </div>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-        {{ Form::model($producto,['route' => ['productos.update',$producto->id], 'method' => 'PUT','class' => 'form-group', 'autocomplete' => 'off','files'=>true ])}}
+        {{ Form::model($categoria,['route' => ['categorias.update',$categoria->id], 'method' => 'PUT','class' => 'form-group', 'autocomplete' => 'off','files'=>true ])}}
 
-            	@include('administracion.productos.partials.formRegistro')
+            	@include('administracion.categorias.partials.formRegistro')
 
             	{{Form::close()}}
             </div>

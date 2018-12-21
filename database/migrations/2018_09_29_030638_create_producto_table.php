@@ -17,7 +17,8 @@ class CreateProductoTable extends Migration
           $table->increments('id');
           $table->string('nombre_producto',100);
           $table->integer('stock');
-          $table->enum('tipoProducto',['BEBIDA','POSTRE']);
+          $table->integer('categoria_id')->unsigned();
+          $table->foreign('categoria_id')->references('id')->on('categorias');
           $table->string('imagen');
           $table->decimal('precio',8,2);
           $table->string('descripcion');

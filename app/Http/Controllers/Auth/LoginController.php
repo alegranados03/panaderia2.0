@@ -43,17 +43,11 @@ class LoginController extends Controller
 
     public function redirectPath(){
 
-      if(auth()->user()->isAdministrador()){
-      //  return '/administrador';
-
-      }if(auth()->user()->isEmpleado()){
-      //  return '/inicio';
-
+      if(auth()->user()->isCliente()){
+        return '/tiendaIni';
       }else{
-      //  return '/home';
+        return '/home';
       }
-
-      return '/home';
     }
 
 }

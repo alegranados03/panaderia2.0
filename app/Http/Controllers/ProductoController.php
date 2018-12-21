@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Producto;
+use App\Categoria;
 use App\Carrito;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -31,7 +32,8 @@ class ProductoController extends Controller
 
 
     public function index(Request $request){
-        $productos=Producto::all();
+        $productos=Producto::join('categorias', 'categorias.id', '=', 'productos.categoria_id')
+        ->select('productos.*','categorias.nombre_categoria')->get();
         return view($this->path.'index',["productos"=>$productos]);
         }
 
@@ -42,8 +44,8 @@ class ProductoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view($this->path.'create');
+    {   $categorias=Categoria::pluck('nombre_categoria','id');
+        return view($this->path.'create',compact('categorias'));
     }
 
     /**
@@ -88,7 +90,8 @@ class ProductoController extends Controller
      */
     public function edit(Producto $producto)
     {
-    return view($this->path.'edit',compact('producto'));
+      $categorias=Categoria::pluck('nombre_categoria','id');
+    return view($this->path.'edit',compact('producto','categorias'));
     }
 
     /**
@@ -102,7 +105,7 @@ class ProductoController extends Controller
     {
       try{
       $producto->nombre_producto=$request->nombre_producto;
-      $producto->tipoProducto=$request->tipoProducto;
+      $producto->categoria_id=$request->categoria_id;
       $producto->precio=$request->precio;
       $producto->descripcion=$request->descripcion;
       if($request->file('imagen')){
@@ -132,10 +135,16 @@ class ProductoController extends Controller
 
 
 
-    public function mostrarProductos()
+    public function mostrarCategorias()
     {
-      $productos=Producto::orderBy('tipoProducto','desc')->get();
-        return view('compras.adproductos',compact('productos'));
+      $categorias=Categoria::all();
+        return view('cliente.productosCat',compact('categorias'));
+    }
+
+    public function mostrarProductos($id)
+    {$categorias=Categoria::all();
+      $productos=Producto::where('categoria_id','=',$id)->get();
+        return view('cliente.productos',compact('productos','categorias'));
     }
 
 
@@ -149,18 +158,18 @@ class ProductoController extends Controller
       return view('compras.verCarrito',['productos'=>$carrito->elementos,'precioTotal'=>$carrito->precioTotal]);
 
     }
-    public function agregarACarrito(Request $request, $id,$redir)
+
+
+
+    public function agregarACarrito(Request $request, $id)
     {
       $producto=Producto::find($id);
       $carritoAnt=Session::has('carrito') ? Session::get('carrito') : null;
       $carrito= new Carrito($carritoAnt);
       $carrito->agregar($producto,$producto->id);
       $request->session()->put('carrito',$carrito);
-      if($redir==1){
-          return redirect()->action('ProductoController@mostrarProductos')->with('msj',$producto->nombre_producto.' Agregado al Carrito Exitosamente');
-      }else{
-          return redirect()->action('ProductoController@verCarrito')->with('msj',$producto->nombre_producto.' Agregado al Carrito Exitosamente');
-      }
+          return redirect()->back()->with('msj',$producto->nombre_producto.' Agregado al Carrito Exitosamente');
+
     }
 
 
@@ -184,8 +193,5 @@ class ProductoController extends Controller
         return redirect()->action('ProductoController@verCarrito')->with('msj',$producto->nombre_producto.'Editado Exitosamente');
     }
 
-    public function productoDetalle(){
 
-      return view('cliente.detalleProducto');
-    }
 }

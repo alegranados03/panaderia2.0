@@ -13,7 +13,7 @@
     	<tr class="odd gradeX">
             <td>{{$producto->nombre_producto}}</td>
             <td>{{$producto->stock }}</td>
-            <td>{{$producto->tipoProducto}}</td>
+            <td>{{$producto->nombre_categoria}}</td>
             <td>{{$producto->precio}}</td>
             <td class="center">
                 <a class="btn btn-info" href="{{route('productos.show',['id'=> $producto->id])}}"><i class="fa fa-eye"></i> Ver</a>

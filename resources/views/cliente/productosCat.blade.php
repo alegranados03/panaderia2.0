@@ -24,7 +24,7 @@ Detalle del Producto
         <div class="col-md-1">
         </div>
         <div class="col-md-11" style="margin-bottom:5%">
-          Lista de Productos
+          Lista de Categorias
         </div>
 
       </div>
@@ -37,22 +37,22 @@ Detalle del Producto
           </div>
           <!-- /.panel-heading -->
           <div class="panel-body">
+
             <div class="row">
-              @foreach($productos as $prod)
+              @foreach($categorias as $cat)
               <div class="col-md-3">
                 <div class="card" style="width: 18rem;margin-bottom:5%">
-                <a href="{{route('tienda.show',['id'=>$prod->id])}}"><img class="card-img-top" src="{{$prod->imagen}}" alt="Card image cap"></a>
+                  <img class="card-img-top" src="{{asset('img/Hersheys.jpg')}}" alt="Card image cap">
                   <div class="card-body">
-                    <h5 class="card-title">{{$prod->nombre_producto}}</h5>
-                    <p class="card-text" style="text-align: justify;">{{$prod->descripcion}}</p>
-                    <a href="{{route('agregar',['id'=>$prod->id])}}" class="btn btn-primary"><i class="fa fa-shopping-cart"></i> Agregar al carrito</a>
+                    <h5 class="card-title">{{$cat->nombre_categoria}}</h5>
+                    <p class="card-text" style="text-align: justify;">{{$cat->descripcion}}</p>
+                    <a href="{{route('mostrarProductos',['id'=>$cat->id])}}" class="btn btn-primary"><i class="fa fa-list"></i> Ver los productos</a>
                   </div>
                 </div>
               </div>
-
               @endforeach
-            </div>
 
+            </div>
           </div>
         </div>
       </div>
