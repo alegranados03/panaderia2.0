@@ -159,7 +159,7 @@
                     <div class="cart_count"><span id='conteo'>{{Session::has('carrito') ? Session::get('carrito')->cantidadTotal : '0'}}</span></div>
                   </div>
                   <div class="cart_content">
-                    <div class="cart_text"><a href="#">Carro</a></div>
+                    <div class="cart_text"><a href="{{url('/vercarrito')}}">Carro</a></div>
                     <div class="cart_price" id='precio'>{{Session::has('carrito') ? '$'.Session::get('carrito')->precioTotal : '$0'}}</div>
                   </div>
                 </div>

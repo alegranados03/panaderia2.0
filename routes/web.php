@@ -48,3 +48,4 @@ Route::get('/agregar-carrito/{idProducto}','ProductoController@agregarACarrito')
 Route::get('/disminuir-carrito/{idProducto}','ProductoController@disminuirUno')->name('disminuir');
 Route::get('/quitarProducto/{idProducto}','ProductoController@quitarProducto')->name('quitar');
 Route::get('/vercarrito','ProductoController@verCarrito')->name('verCarrito');
+Route::get('/agregar-varios/{idProducto}/{cantidad}','ProductoController@agregarVarios')->name('agregarVarios');

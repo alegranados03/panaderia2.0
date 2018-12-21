@@ -150,12 +150,13 @@ class ProductoController extends Controller
 
     public function verCarrito()
     {
+      $categorias=Categoria::all();
       if(!Session::has('carrito')){
-          return view('compras.verCarrito',['productos'=>null]);
+          return view('cliente.verCarrito',['productos'=>null],compact('categorias'));
       }
       $carritoAnt=Session::get('carrito');
       $carrito=new Carrito($carritoAnt);
-      return view('compras.verCarrito',['productos'=>$carrito->elementos,'precioTotal'=>$carrito->precioTotal]);
+      return view('cliente.verCarrito',['productos'=>$carrito->elementos,'precioTotal'=>$carrito->precioTotal],compact('categorias'));
 
     }
 
@@ -193,5 +194,14 @@ class ProductoController extends Controller
         return redirect()->action('ProductoController@verCarrito')->with('msj',$producto->nombre_producto.'Editado Exitosamente');
     }
 
+    public function agregarVarios(Request $request,$id, $cantidad){
+      $producto = Producto::find($id);
+      $carritoAnt=Session::has('carrito') ? Session::get('carrito') : null;
+      $carrito= new Carrito($carritoAnt);
+      $carrito->agregarVarios($producto,$producto->id,$cantidad);
+
+      $request->session()->put('carrito',$carrito);
+      return redirect()->back()->with('info','Agregado con exito')->with('tipo', 'success');
+    }
 
 }

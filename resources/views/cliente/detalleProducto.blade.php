@@ -38,6 +38,7 @@ Detalle del Producto
 				<!-- Description -->
 				<div class="col-lg-5 order-3">
 					<div class="product_description">
+						<input type="hidden" name="idProd" id="idProd" value="{{$producto->id}}">
 						<div class="product_category">{{$categoriaP->nombre_categoria}}</div>
 						<div class="product_name">{{$producto->nombre_producto}}</div>
 						<div class="product_text"><p>{{$producto->descripcion}}</p></div>
@@ -48,7 +49,7 @@ Detalle del Producto
 									<!-- Product Quantity -->
 									<div class="product_quantity clearfix">
 										<span>Cantidad: </span>
-										<input id="quantity_input" type="text" pattern="[0-9]*" value="1">
+										<input id="quantity_input" name="quantity_input" type="text" pattern="[0-9]*" value="1">
 										<div class="quantity_buttons">
 											<div id="quantity_inc_button" class="quantity_inc quantity_control"><i class="fas fa-chevron-up"></i></div>
 											<div id="quantity_dec_button" class="quantity_dec quantity_control"><i class="fas fa-chevron-down"></i></div>
@@ -62,7 +63,7 @@ Detalle del Producto
 
 								<div class="product_price">{{$producto->precio}}</div>
 								<div class="button_container">
-					<a href="#"><button type="button" class="button cart_button"> <i class="fa fa-shopping-cart"></i> Agregar al Carrito</button></a>
+					<a id="agregarV" name="agregarV" href=""><button type="button" class="button cart_button"> <i class="fa fa-shopping-cart"></i> Agregar al Carrito</button></a>
 								</div>
 
 							</form>
@@ -88,4 +89,15 @@ Detalle del Producto
 <script src="{{asset('OneTech/plugins/slick-1.8.0/slick.js')}}"></script>
 <script src="{{asset('OneTech/plugins/easing/easing.js')}}"></script>
 <script src="{{asset('OneTech/js/product_custom.js')}}"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#agregarV").click(function(){
+       var x = document.getElementById('quantity_input').value;
+       var y = document.getElementById('idProd').value;
+       this.setAttribute("href","/agregar-varios/"+y+"/"+x);
+    });
+});
+</script>
 @endsection
+

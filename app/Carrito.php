@@ -66,7 +66,19 @@ class Carrito
       $this->precioTotal=0;
       }
     }
-
+    public function agregarVarios($elemento,$id,$cantidad){
+      $guardado=['cantidad'=>0,'precio'=>$elemento->precio,'elemento'=>$elemento];
+    if($this->elementos){
+      if (array_key_exists($id,$this->elementos)){
+        $guardado=$this->elementos[$id];
+      }
+    }
+    $guardado['cantidad']=$guardado['cantidad']+$cantidad;
+    $guardado['precio']=$elemento->precio*$guardado['cantidad'];
+    $this->elementos[$id]=$guardado;
+    $this->cantidadTotal= $this->cantidadTotal + $cantidad;
+    $this->precioTotal+=$elemento->precio*$cantidad;
+    }
 
 
 }
