@@ -149,7 +149,7 @@ Carrito
 									      </div>
 									      <div class="modal-footer">
 									        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-									        <button type="button" class="btn btn-primary">Continuar</button>
+									        <a class="btn btn-md btn-primary" href="{{route('pagos.index')}}">Continuar</a>
 									      </div>
 									    </div>
 									  </div>

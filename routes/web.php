@@ -41,6 +41,7 @@ Route::resource('materiaPrima','MateriaPrimaController');
 Route::resource('usuarios','UserController');
 Route::get('/cambiarPass/{idUsuario}','UserController@editPassword')->name('cambiarPass');
 Route::post('/actualizarPassword/{idUsuario}','UserController@actualizarPassword')->name('actualizarPassword');
+Route::post('/asignarTarjeta/{id}', 'UserController@asignarTarjeta')->name('asignarTarjeta');
 
 
 //rutas del carrito
@@ -49,3 +50,6 @@ Route::get('/disminuir-carrito/{idProducto}','ProductoController@disminuirUno')-
 Route::get('/quitarProducto/{idProducto}','ProductoController@quitarProducto')->name('quitar');
 Route::get('/vercarrito','ProductoController@verCarrito')->name('verCarrito');
 Route::get('/agregar-varios/{idProducto}/{cantidad}','ProductoController@agregarVarios')->name('agregarVarios');
+
+//Rutas de pago
+Route::resource('pagos','PagoController');

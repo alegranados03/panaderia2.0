@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pago;
+use App\Categoria;
 use Illuminate\Http\Request;
 
 class PagoController extends Controller
@@ -14,7 +15,8 @@ class PagoController extends Controller
      */
     public function index()
     {
-        //
+        $categorias = Categoria::all();
+        return view('pago.index', compact('categorias'));
     }
 
     /**
@@ -33,9 +35,13 @@ class PagoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+        try {   
+            return redirect()->action('TiendaController@index');
+        } catch (Exception $e) {
+            
+        }
     }
 
     /**

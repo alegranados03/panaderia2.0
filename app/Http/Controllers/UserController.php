@@ -186,5 +186,21 @@ class UserController extends Controller
     }
   }
 
+  public function asignarTarjeta(Request $request, $id){
+    
+    try {
+      $user = User::findOrFail($id);
+
+      $user->tarjeta_credito = $request->tarjeta_credito;
+      $user->update();
+    
+
+    return redirect()->back()->with('info', 'Asignado Correctamente');
+    } catch (Exception $e) {
+      
+    }
+
+  }
+
 
 }
