@@ -126,24 +126,27 @@ Carrito
 									        		<th>Costo Unitario</th>
 									        		<th>Total</th>
 									        	</tr>
-										        	@foreach($productos as $prod)
-										        	<tr align="center">
-											        	<td>{{$prod['cantidad']}}</td>
-											        	<td>{{$prod['elemento']->nombre_producto}}</td>
-											        	<td>
-											        		@php
-																 $x = $prod['precio']/$prod["cantidad"];
-															@endphp
-															$ {{$x}}
-											        	</td>
-											        	<td>$ {{$prod['precio']}}</td>
-											        </tr>	
-										        	@endforeach
-									        	
-									        	<tr>
-										    		<td align="right" colspan="3"><strong>Total:</strong></td>
-										    		<td align="center">$ {{$precioTotal}}</td>
-										      	</tr>
+									        		@if(Session::has('carrito'))
+											        	@foreach($productos as $prod)
+											        	<tr align="center">
+												        	<td>{{$prod['cantidad']}}</td>
+												        	<td>{{$prod['elemento']->nombre_producto}}</td>
+												        	<td>
+												        		@php
+																	 $x = $prod['precio']/$prod["cantidad"];
+																@endphp
+																$ {{$x}}
+												        	</td>
+												        	<td>$ {{$prod['precio']}}</td>
+												        </tr>	
+											        	@endforeach
+											        	<tr>
+												    		<td align="right" colspan="3"><strong>Total:</strong></td>
+												    		<td align="center">$ {{$precioTotal}}</td>
+										      			</tr>
+											        	@else
+
+											        	@endif
 									        </table>
 									      </div>
 									      <div class="modal-footer">
