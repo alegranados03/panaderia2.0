@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->ENUM('sexo',['M','F']);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('tarjeta_credito')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
