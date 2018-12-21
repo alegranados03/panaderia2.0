@@ -55,6 +55,9 @@ Mi Perfil
 		<br/>
 		<br/>
 		<div class="row">
+			<div class="col-md-12" align="center">
+				<h3>Mis Ordenes</h3>
+			</div>
 			<div class="col-md-12">
 				@include('cliente.tablaOrden')
 			</div>
