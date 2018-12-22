@@ -68,7 +68,7 @@ Carrito
 									</li>
 									@endforeach
 										</ul>
-									</div>					
+									</div>
 									<!-- Order Total -->
 									<div class="order_total">
 										<div class="order_total_content text-md-right">
@@ -138,7 +138,7 @@ Carrito
 																$ {{$x}}
 												        	</td>
 												        	<td>$ {{$prod['precio']}}</td>
-												        </tr>	
+												        </tr>
 											        	@endforeach
 											        	<tr>
 												    		<td align="right" colspan="3"><strong>Total:</strong></td>
@@ -151,7 +151,11 @@ Carrito
 									      </div>
 									      <div class="modal-footer">
 									        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-									        <a class="btn btn-md btn-primary" href="{{route('pagos.index')}}">Continuar</a>
+													@auth
+													<a class="btn btn-md btn-primary" href="{{route('pagos.index')}}">Continuar</a>
+													@else
+													<a class="btn btn-md btn-primary" href="{{route('login')}}">Inicia sesión para poder cancelar</a>
+													@endauth
 									      </div>
 									    </div>
 									  </div>
@@ -160,7 +164,7 @@ Carrito
 									{{Form::close()}}
 								</div>
 								<div class="col-md-4"></div>
-							</div>						
+							</div>
 						</div>
 					</div>
 				</div>
@@ -181,4 +185,3 @@ Carrito
 <script src="{{asset('OneTech/plugins/easing/easing.js')}}"></script>
 <script src="{{asset('OneTech/js/cart_custom.js')}}"></script>
 @endsection
-

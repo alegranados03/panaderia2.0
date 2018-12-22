@@ -164,7 +164,10 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-md-12">
+                          <div class="col-md-6">
+                              <a href="{{url('/')}}" class="btn btn-primary bg-dark btn-block">Cancelar</a>
+                          </div>
+                            <div class="col-md-6">
                                 <button type="submit" class="btn btn-success btn-block">
                                     {{ __('Registrarse') }}
                                 </button>
@@ -192,4 +195,3 @@
 </body>
 
 </html>
-

@@ -94,7 +94,7 @@ class PagoController extends Controller
      */
     public function show(Pago $pago)
     {
-        //
+        
     }
 
     /**

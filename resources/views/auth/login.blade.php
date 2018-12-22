@@ -72,10 +72,18 @@
                                 </div>
                             </div>
                             <div class="form-group row mb-5">
+
                                 <div class="col-md-12 offset-md-4">
                                     <button type="submit" class="btn btn-lg btn-success btn-block">
                                         {{ __('Iniciar Sesion') }}
                                     </button>
+                                </div>
+
+                                <div class="col-md-12 offset-md-4">
+                                  <br/>
+                                </div>
+                                <div class="col-md-12 offset-md-4">
+                                    <a href="{{url('/')}}" class="btn btn-lg btn-primary btn-block">Cancelar</a>
                                 </div>
                             </div>
                             <div align="center">

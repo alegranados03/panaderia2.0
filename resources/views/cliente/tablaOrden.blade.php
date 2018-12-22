@@ -15,7 +15,7 @@
             <td>{{$orden->estado_servicio}}</td>
             <td>{{$orden->estado_pago}}</td>
             <td class="center">{{$orden->created_at}}</td>
-            <td class="center"><a class="btn btn-info" href="{{route('ordenes.show',['id'=> $orden->id])}}"><i class="fa fa-eye"></i> Ver</a></td>
+            <td class="center"><a class="btn btn-info" href="{{route('ordenes.show',$orden->id)}}"><i class="fa fa-eye"></i> Ver</a></td>
         </tr>
       @endforeach
     </tbody>

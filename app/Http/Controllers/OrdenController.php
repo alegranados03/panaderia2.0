@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Orden;
+use App\Categoria;
+use App\Pago;
 use Illuminate\Http\Request;
 
 class OrdenController extends Controller
@@ -44,12 +46,22 @@ class OrdenController extends Controller
      * @param  \App\Orden  $orden
      * @return \Illuminate\Http\Response
      */
-    public function show(Orden $orden)
-    {
-        //
+    public function show($id)
+    {   $orden=Orden::findOrFail($id);
+        $detallesOrden=Orden::join('detalles_orden','ordenes.id','=','detalles_orden.orden_id')
+        ->join('productos','productos.id','=','detalles_orden.producto_id')
+        ->where('ordenes.id','=',$orden->id)
+        ->select('ordenes.codigo_seguimiento','productos.nombre_producto','productos.precio','detalles_orden.cantidad_producto','detalles_orden.total_parcial')
+        ->get();
+      
+        $codigo=$orden->codigo_seguimiento;
+        $total = Pago::select('total_cancelar')->where('orden_id','=',$orden->id)->value('total_cancelar');
+        $fechaCreacion=$orden->created_at;
+        $categorias=Categoria::all();
+        return view('cliente.detalleOrden',compact('detallesOrden','categorias','codigo','total','fechaCreacion'));
     }
 
-    /**
+    /*'*'
      * Show the form for editing the specified resource.
      *
      * @param  \App\Orden  $orden
