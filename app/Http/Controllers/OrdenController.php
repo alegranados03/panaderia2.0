@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Orden;
 use App\Categoria;
 use App\Pago;
+use App\Mesa;
 use Illuminate\Http\Request;
 
 class OrdenController extends Controller
@@ -26,7 +27,8 @@ class OrdenController extends Controller
      */
     public function create()
     {
-        return view('administracion.orden.create');
+        $mesas = Mesa::pluck('codigo_mesa','id')->toArray();
+        return view('administracion.orden.create',compact('mesas'));
     }
 
     /**

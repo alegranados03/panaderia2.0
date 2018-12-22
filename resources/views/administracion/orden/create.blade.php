@@ -1,6 +1,6 @@
 @extends('layouts.base')
 @section('titulo')
-Crear Producto
+Crear Orden
 @endsection
 
 @section('content')
@@ -9,15 +9,15 @@ Crear Producto
             <div class="panel-heading" align="center" style="font-size: 30px;font-weight: bold;">
                 <div class="row">
                 	<div class="col-md-12">
-                	    Registrar Nuevo Producto
+                	    Registrar Nueva Orden
                 	</div>
                 </div>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-            	{{ Form::open(['route' => 'productos.store', 'method' => 'POST','class' => 'form-group', 'autocomplete' => 'off', 'files'=>true])}}
+            	{{ Form::open(['route' => 'ordenes.store', 'method' => 'POST','class' => 'form-group', 'autocomplete' => 'off', 'files'=>true])}}
 
-            	@include('administracion.productos.partials.formRegistro')
+            	@include('administracion.orden.partials.formRegistro')
 
             	{{Form::close()}}
             </div>

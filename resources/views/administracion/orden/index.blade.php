@@ -1,7 +1,7 @@
 @extends('layouts.base')
 
 @section('titulo')
-Lista de Ordenes
+Lista de Ordenes Pendientes en Local
 @endsection
 
 @section('content')
@@ -15,7 +15,7 @@ Lista de Ordenes
                 	    Lista de Ordenes
                 	</div>
                 	<div class="col-md-2">
-                		<a class="btn btn-primary" href="{{route('productos.create')}}">
+                		<a class="btn btn-primary" href="{{route('ordenes.create')}}">
                 			<i class="fa fa-book"><i class="fa fa-plus" style="font-size: 5px"></i></i> Crear Orden
                 		</a>
                 	</div>

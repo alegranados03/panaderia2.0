@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
       $this->call(rolDefaultSeeder::class);
        $this->call(userDefault::class);
        $this->call(categoriaDefault::class);
+       $this->call(MesaDefault::class);
 
     }
 }
