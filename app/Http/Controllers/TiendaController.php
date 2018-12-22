@@ -102,9 +102,14 @@ class TiendaController extends Controller
     }
 
     public function miperfil(){
-        $categorias = Categoria::all();
-        $ordenes=Orden::where('user_id','=',auth()->user()->id)->get();
-        return view('cliente.miperfil',compact('categorias','ordenes'));
+        if(auth()->user()->isCliente()){
+            $categorias = Categoria::all();
+            $ordenes=Orden::where('user_id','=',auth()->user()->id)->get();
+            return view('cliente.miperfil',compact('categorias','ordenes'));    
+        }else{
+            return view('administracion.usuarios.miperfil');
+        }
+        
     }
 
     public function misordenes(){

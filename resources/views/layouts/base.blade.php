@@ -224,6 +224,9 @@
                             @endif
                         @else
                             <li>
+                                <a href="{{route('miperfil')}}" style="color: black;font-size: 20px"><i class="fa fa-user"></i> Mi Perfil</a>
+                            </li>
+                            <li>
                                     <a href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();" style="color: black;font-size: 20px">
@@ -263,37 +266,19 @@
                             <a href="{{route('usuarios.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-user fa-fw" style="font-size: 25px"></i> Usuarios</a>
                         </li>
                         <li>
-                            <a href="#" style="color: black; font-weight: bold;"><i class="fa fa-wrench fa-fw" style="font-size: 25px"></i> UI Elements<span class="fa arrow"></span></a>
+                            <a href="#" style="color: black; font-weight: bold;"><i class="fa fa-folder-open-o" style="font-size: 25px"></i> Gestionar Orden<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="panels-wells.html" style="color: black; font-weight: bold;">Panels and Wells</a>
+                                    <a href="{{route('ordenes.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-book" style="font-size: 25px"></i>  Ordenes Pendientes en local</a>
                                 </li>
                                 <li>
-                                    <a href="buttons.html" style="color: black; font-weight: bold;">Buttons</a>
+                                    <a href="{{route('ordenes.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-book" style="font-size: 25px"></i>  Historial de Ordenes en local </a>
                                 </li>
                                 <li>
-                                    <a href="notifications.html" style="color: black; font-weight: bold;">Notifications</a>
+                                    <a href="{{route('ordenes.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-book" style="font-size: 25px"></i>  Ordenes pendientes en linea </a>
                                 </li>
                                 <li>
-                                    <a href="typography.html" style="color: black; font-weight: bold;">Typography</a>
-                                </li>
-                                <li>
-                                    <a href="icons.html" style="color: black; font-weight: bold;"> Icons</a>
-                                </li>
-                                <li>
-                                    <a href="grid.html" style="color: black; font-weight: bold;">Grid</a>
-                                </li>
-                            </ul>
-                            <!-- /.nav-second-level -->
-                        </li>
-                        <li>
-                            <a href="#" style="color: black; font-weight: bold;"><i class="fa fa-files-o fa-fw"></i> Sample Pages<span class="fa arrow"></span></a>
-                            <ul class="nav nav-second-level">
-                                <li>
-                                    <a href="blank.html" style="color: black; font-weight: bold;">Blank Page</a>
-                                </li>
-                                <li>
-                                    <a href="login.html" style="color: black; font-weight: bold;">Login Page</a>
+                                    <a href="{{route('ordenes.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-book" style="font-size: 25px"></i>  Historial de ordenes en linea </a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
