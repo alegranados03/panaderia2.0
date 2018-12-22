@@ -17,7 +17,10 @@ class OrdenController extends Controller
      */
     public function index()
     {
-        $ordenes = Orden::join('mesas','ordenes.mesa_id','=','mesas.id')->where('ordenes.tipo_orden','=','LOCAL')->where('ordenes.estado_servicio','=','PENDIENTE')->select('ordenes.*','mesas.codigo_mesa')->get();
+        $ordenes = Orden::join('mesas','ordenes.mesa_id','=','mesas.id')
+        ->where('ordenes.tipo_orden','=','LOCAL')
+        ->where('ordenes.estado_servicio','=','PENDIENTE')
+        ->select('ordenes.*','mesas.codigo_mesa')->get();
         return view('administracion.orden.index',compact('ordenes'));
     }
 
@@ -40,7 +43,17 @@ class OrdenController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $orden = new Orden();
+
+        $orden->codigo_seguimiento = substr(microtime(),11,strlen(microtime())-11);
+        $orden->estado_servicio = $request->estado_servicio;
+        $orden->estado_servicio="PENDIENTE";
+        $orden->estado_pago="SIN CANCELAR";
+        $orden->tipo_orden="LOCAL";
+        $orden->mesa_id = $request->mesa_id;
+        $orden->user_id=auth()->user()->id;
+        $orden->save();
+        return redirect()->action('OrdenController@index');
     }
 
     /**
@@ -56,7 +69,7 @@ class OrdenController extends Controller
         ->where('ordenes.id','=',$orden->id)
         ->select('ordenes.codigo_seguimiento','productos.nombre_producto','productos.precio','detalles_orden.cantidad_producto','detalles_orden.total_parcial')
         ->get();
-      
+
         $codigo=$orden->codigo_seguimiento;
         $total = Pago::select('total_cancelar')->where('orden_id','=',$orden->id)->value('total_cancelar');
         $fechaCreacion=$orden->created_at;
@@ -97,4 +110,31 @@ class OrdenController extends Controller
     {
         //
     }
+
+
+    public function historialLocal()
+    {
+      $ordenes = Orden::join('mesas','ordenes.mesa_id','=','mesas.id')
+      ->where('ordenes.tipo_orden','=','LOCAL')
+      ->where('ordenes.estado_servicio','=','ENTREGADA')
+      ->select('ordenes.*','mesas.codigo_mesa')->get();
+        return view('administracion.orden.historialLocal',compact('ordenes'));
+    }
+
+    public function historialLinea()
+    {
+        $ordenes = Orden::where('tipo_orden','=','EN LINEA')
+        ->where('estado_servicio','=','ENTREGADA')->get();
+        return view('administracion.orden.historialOLinea',compact('ordenes'));
+    }
+
+    public function pendienteLinea()
+    {
+        $ordenes = Orden::where('ordenes.tipo_orden','=','EN LINEA')
+        ->where('ordenes.estado_servicio','=','PENDIENTE')->get();
+        return view('administracion.orden.pendienteLinea',compact('ordenes'));
+    }
+
+
+
 }

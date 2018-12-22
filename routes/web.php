@@ -52,7 +52,14 @@ Route::get('/disminuir-carrito/{idProducto}','ProductoController@disminuirUno')-
 Route::get('/quitarProducto/{idProducto}','ProductoController@quitarProducto')->name('quitar');
 Route::get('/vercarrito','ProductoController@verCarrito')->name('verCarrito');
 Route::get('/agregar-varios/{idProducto}/{cantidad}','ProductoController@agregarVarios')->name('agregarVarios');
-Route::resource('ordenes','OrdenController');
+
 
 //Rutas de pago
 Route::resource('pagos','PagoController');
+
+
+//Rutas de ordenes
+Route::resource('ordenes','OrdenController');
+Route::get('historialLocal','OrdenController@historialLocal')->name('historialLocal');
+Route::get('historialLinea','OrdenController@historialLinea')->name('historialLinea');
+Route::get('pendienteLinea','OrdenController@pendienteLinea')->name('pendienteLinea');
