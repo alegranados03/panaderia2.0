@@ -17,7 +17,8 @@ class OrdenController extends Controller
      */
     public function index()
     {
-        return view('administracion.orden.index');
+        $ordenes = Orden::join('mesas','ordenes.mesa_id','=','mesas.id')->where('ordenes.tipo_orden','=','LOCAL')->where('ordenes.estado_servicio','=','PENDIENTE')->select('ordenes.*','mesas.codigo_mesa')->get();
+        return view('administracion.orden.index',compact('ordenes'));
     }
 
     /**
