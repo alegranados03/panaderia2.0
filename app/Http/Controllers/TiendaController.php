@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Producto;
 use App\Categoria;
 use App\Carrito;
+use App\Orden;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\Redirect;
@@ -102,11 +103,14 @@ class TiendaController extends Controller
 
     public function miperfil(){
         $categorias = Categoria::all();
-        return view('cliente.miperfil',compact('categorias'));
+        $ordenes=Orden::where('user_id','=',auth()->user()->id)->get();
+        return view('cliente.miperfil',compact('categorias','ordenes'));
     }
 
     public function misordenes(){
         $categorias = Categoria::all();
-        return view('cliente.ordenpendiente',compact('categorias'));
+        $ordenes=Orden::where('user_id','=',auth()->user()->id)
+        ->where('estado_servicio','=','PENDIENTE')->get();
+        return view('cliente.ordenpendiente',compact('categorias','ordenes'));
     }
 }
