@@ -26,7 +26,7 @@ class OrdenController extends Controller
      */
     public function create()
     {
-        //
+        return view('administracion.orden.create');
     }
 
     /**
