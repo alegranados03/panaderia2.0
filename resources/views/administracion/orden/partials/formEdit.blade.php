@@ -5,6 +5,8 @@
 	<div class="col-md-4">
 		{{ Form::label('mesa_id','Mesa') }}
 		{{ Form::select('mesa_id',$mesas,null,['class'=> 'form-control','placeholder' => 'Seleccione...','required']) }}
+		{{ Form::label('estado_servicio','Mesa') }}
+		{{ Form::select('estado_servicio',['PENDIENTE'=>'PENDIENTE','ENTREGADA'=>'ENTREGADA'],null,['class'=> 'form-control','placeholder' => 'Seleccione...','required']) }}
 	</div>
 </div>
 <br/>

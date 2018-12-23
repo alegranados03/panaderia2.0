@@ -22,24 +22,16 @@ Cambiar Contraseña
     	  <div class="row">
     	    <div class="col-md-1">
     	    </div>
-    	    <div class="col-md-11" style="margin-bottom:5%">
+    	    <div class="col-md-10" style="margin-bottom:5%" align='center'>
     	      Cambiar Contraseña
     	    </div>
-	
+
     	  </div>
     	</div>
-    	<div class="panel-body">
-    	    <div class="row">
-    	        <div class="col-md-4">
-    	        	Insertar Formulario Collective aqui
-    	        </div>
-    	        <div class="col-md-4">
-    	        	Insertar Formulario Collective aqui
-    	        </div>
-    	        <div class="col-md-4">
-    	        	Insertar Formulario Collective aqui
-    	        </div>
-    	    </div>
+    	<div class="panel-body" align='center'>
+
+@include('administracion.usuarios.partials.formCambioPass')
+
     	</div>
     </div>
 </div>

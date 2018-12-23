@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Pago;
+use App\Producto;
 use App\Categoria;
 use App\Orden;
 use App\DetalleOrden;
@@ -30,7 +31,6 @@ class PagoController extends Controller
      */
     public function create()
     {
-        //
     }
 
     /**
@@ -55,6 +55,20 @@ class PagoController extends Controller
               if($orden->save()){
                 //se registran los detalles de la orden y se guardan en la base
                 foreach($carrito->elementos as $producto){
+
+                $prodx=Producto::findOrFail($producto['elemento']->id);
+
+                if($producto['cantidad']>$prodx->stock){
+                  $carrito->eliminar($producto['elemento']->id);
+                  $request->session()->put('carrito',$carrito);
+                  $orden->delete();
+
+                  return redirect()->action('ProductoController@verCarrito')->with('error');
+                }else{
+                  $prodx->stock=$prodx->stock - $producto['cantidad'];
+                  $prodx->update();
+                }
+
                 $detalle=new DetalleOrden();
                 $detalle->orden_id=$orden->id;
                 $detalle->producto_id=$producto['elemento']->id;
@@ -94,7 +108,7 @@ class PagoController extends Controller
      */
     public function show(Pago $pago)
     {
-        
+
     }
 
     /**
@@ -129,5 +143,15 @@ class PagoController extends Controller
     public function destroy(Pago $pago)
     {
         //
+    }
+
+    public function vistaPago($id){
+      return view('administracion.orden.pagoOrden');
+    }
+
+
+
+    public function pagoLocal(Request $request, $id){
+
     }
 }

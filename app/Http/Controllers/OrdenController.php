@@ -21,7 +21,7 @@ class OrdenController extends Controller
     {
         $ordenes = Orden::join('mesas','ordenes.mesa_id','=','mesas.id')
         ->where('ordenes.tipo_orden','=','LOCAL')
-        ->where('ordenes.estado_servicio','=','PENDIENTE')
+              ->where('ordenes.estado_pago','=','SIN CANCELAR')
         ->select('ordenes.*','mesas.codigo_mesa')->get();
         return view('administracion.orden.index',compact('ordenes'));
     }
@@ -66,7 +66,7 @@ class OrdenController extends Controller
     public function show($id)
     {
         if(auth()->user()->isCliente()){
-       //Lado del Cliente 
+       //Lado del Cliente
        $orden=Orden::findOrFail($id);
         $detallesOrden=Orden::join('detalles_orden','ordenes.id','=','detalles_orden.orden_id')
         ->join('productos','productos.id','=','detalles_orden.producto_id')
@@ -84,7 +84,7 @@ class OrdenController extends Controller
             $detallesOrden=Orden::join('detalles_orden','ordenes.id','=','detalles_orden.orden_id')
             ->join('productos','productos.id','=','detalles_orden.producto_id')
             ->where('ordenes.id','=',$orden->id)
-            ->select('ordenes.codigo_seguimiento','productos.nombre_producto','productos.precio','detalles_orden.cantidad_producto','detalles_orden.total_parcial')
+            ->select('ordenes.codigo_seguimiento','productos.nombre_producto','detalles_orden.cantidad_producto','detalles_orden.total_parcial')
             ->get();
 
             $codigo=$orden->codigo_seguimiento;
@@ -93,7 +93,7 @@ class OrdenController extends Controller
                 $total+= $value->total_parcial;
             }
             $fechaCreacion=$orden->created_at;
-            return view('administracion.orden.show',compact('detallesOrden','codigo','total','fechaCreacion')); 
+            return view('administracion.orden.show',compact('detallesOrden','codigo','total','fechaCreacion'));
         }
     }
 
@@ -123,10 +123,11 @@ class OrdenController extends Controller
         try {
             $orden = Orden::findOrFail($id);
             $orden->mesa_id = $request->mesa_id;
+            $orden->estado_servicio=$request->estado_servicio;
             $orden->update();
             return redirect()->action('OrdenController@index');
         } catch (Exception $e) {
-            
+
         }
     }
 
@@ -136,9 +137,20 @@ class OrdenController extends Controller
      * @param  \App\Orden  $orden
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Orden $orden)
+    public function destroy($id)
     {
-        //
+      try {
+        $orden=Orden::findOrFail($id);
+      if($orden->estado_pago=="SIN CANCELAR"){
+        $orden->delete();
+      }
+
+    return redirect()->action('OrdenController@index');
+    } catch (Exception $e) {
+
+    }
+
+
     }
 
 
@@ -146,7 +158,7 @@ class OrdenController extends Controller
     {
       $ordenes = Orden::join('mesas','ordenes.mesa_id','=','mesas.id')
       ->where('ordenes.tipo_orden','=','LOCAL')
-      ->where('ordenes.estado_servicio','=','ENTREGADA')
+      ->where('ordenes.estado_pago','=','CANCELADA')
       ->select('ordenes.*','mesas.codigo_mesa')->get();
         return view('administracion.orden.historialLocal',compact('ordenes'));
     }
@@ -176,7 +188,7 @@ class OrdenController extends Controller
             try {
                 $productosObj = Producto::all();
                 foreach ($productosObj as $key => $value) {
-                    for ($i=0; $i < sizeof($request->productos) ; $i++) { 
+                    for ($i=0; $i < sizeof($request->productos) ; $i++) {
                         if($value->id == $request->productos[$i]){
                             $detallesObj = DetalleOrden::select('*')
                             ->where('orden_id', '=', $request->idOrden)
@@ -187,6 +199,7 @@ class OrdenController extends Controller
                                 }
                                 $detallesObj = DetalleOrden::findOrFail($idDetalle);
                                 $detallesObj->cantidad_producto+=$request[$request->productos[$i]];
+
                                 $detallesObj->total_parcial += $request[$request->productos[$i]]*$value->precio;
                                 $detallesObj->update();
                             }else{
@@ -200,17 +213,60 @@ class OrdenController extends Controller
                                 }else{
                                     return redirect()->back();
                                 }
-                            }   
+                            }
                         }
                     }
                 }
                 return redirect()->action('OrdenController@index');
             } catch (Exception $e) {
-                
+
             }
         }else{
             return redirect()->back();
         }
     }
+
+
+    public function quitarDetalle($id){
+      $orden=$id;
+    $productos=Producto::join('detalles_orden','productos.id','=','detalles_orden.producto_id')
+    ->where('detalles_orden.orden_id','=',$id)->select('productos.*')->get();
+    return view('administracion.orden.quitarDetalles',compact('productos','orden'));
+
+    }
+
+    public function quitarDetalleStore(Request $request){
+
+       if(!is_null($request->productos)){
+
+         foreach($request->productos as $prod){
+          $detalle=DetalleOrden::where('orden_id','=',$request->idOrden)
+          ->where('producto_id','=',$prod)->get();
+          $producto=Producto::findOrFail($prod);
+
+          foreach ($detalle as $key => $detalleFor) {
+              $idDetalle = $detalleFor->id;
+          }//foreach para id
+          $detalle = DetalleOrden::findOrFail($idDetalle);
+          $sobre=$detalle->cantidad_producto - $request[$prod];
+
+          if($sobre<0){
+            return redirect()->action('OrdenController@quitarDetalle',['id'=>$request->idOrden])->with('mensaje');
+          }
+          if($sobre>0){
+            $detalle->cantidad_producto=$sobre;
+            $detalle->total_parcial=$sobre * $producto->precio;
+            $detalle->update();
+          }
+          if($sobre==0){
+            $detalle->delete();
+            }
+        } //fpreach
+return redirect()->action('OrdenController@index');
+}else{
+  return redirect()->back();
+}
+
+     }
 
 }

@@ -26,7 +26,7 @@
                 <a class="btn btn-info" href="{{route('ordenes.show',['id'=> $orden->id])}}"><i class="fa fa-eye"></i> Ver</a>
             </td>
             <td class="center" align="center">
-                <a class="btn btn-warning" href="{{route('ordenes.destroy',['id'=> $orden->id])}}"><i class="fa fa-check"></i> Pagar Orden</a>
+                <a class="btn btn-warning" href="{{route('vistaPago',['id'=> $orden->id])}}"><i class="fa fa-check"></i> Pagar Orden</a>
             </td>
             <td class="center" align="center">
                 <a class="btn btn-success" href="{{route('ordenes.edit',['id'=> $orden->id])}}"><i class="fa fa-edit"></i> Editar</a>
@@ -35,11 +35,20 @@
                 <a class="btn btn-primary" href="{{route('agregarProducto',['id'=> $orden->id])}}"><i class="fa fa-plus"></i> Agregar Producto</a>
             </td>
             <td class="center" align="center">
-                <a class="btn btn-danger" href="{{route('agregarProducto',['id'=> $orden->id])}}"><i class="fa fa-minus"></i> Eliminar Producto</a>
+                <a class="btn btn-danger" href="{{route('quitarProducto',['id'=> $orden->id])}}"><i class="fa fa-minus"></i> Eliminar Producto</a>
             </td>
+
             <td class="center" align="center">
-                <a class="btn btn-danger" href="{{route('ordenes.destroy',['id'=> $orden->id])}}"><i class="fa fa-trash"></i> Eliminar</a>
+              <form class="form" method="post" action="{{ route('ordenes.destroy',['id'=> $orden->id]) }} ">
+               <input type="hidden" name="_method" value="DELETE">
+                      {{ csrf_field() }}
+                      <div class="form-group">
+                   <button  type="submit" class="btn btn-danger btn-sm "><span class="glyphicon glyphicon-trash"></span>Eliminar</a></button>
+                   </form>
             </td>
+
+
+
         </tr>
       @endforeach
     </tbody>

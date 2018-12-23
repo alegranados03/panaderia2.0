@@ -25,21 +25,13 @@ Editar Contraseña
     	    <div class="col-md-11" style="margin-bottom:5%">
     	      Cambiar Contraseña
     	    </div>
-	
+
     	  </div>
     	</div>
     	<div class="panel-body">
-    	    <div class="row">
-    	        <div class="col-md-4">
-    	        	Insertar Formulario Collective aqui 2 
-    	        </div>
-    	        <div class="col-md-4">
-    	        	Insertar Formulario Collective aqui 2 
-    	        </div>
-    	        <div class="col-md-4">
-    	        	Insertar Formulario Collective aqui 2 
-    	        </div>
-    	    </div>
+				{{ Form::model(Auth::user(),['route' => ['actualizarMiPerfil',Auth::user()->id], 'method' => 'PUT','class' => 'form-group', 'autocomplete' => 'off' ])}}
+ 			 @include('administracion.usuarios.partials.formMyEdit')
+ 			 {{Form::close()}}
     	</div>
     </div>
 </div>

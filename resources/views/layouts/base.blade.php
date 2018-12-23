@@ -287,6 +287,9 @@
             </ul>
             <!-- /.nav-second-level -->
           </li>
+          <li>
+            <a href="{{route('mesas.index')}}" style="color: black; font-weight: bold;"><i class="fa fa-cutlery fa-fw" style="font-size: 25px"></i>Mesas</a>
+          </li>
         </ul>
       </div>
       <!-- /.sidebar-collapse -->

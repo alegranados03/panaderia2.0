@@ -16,7 +16,7 @@ class CreateDetallesOrdenTable extends Migration
         Schema::create('detalles_orden', function (Blueprint $table) {
           $table->increments('id');
           $table->integer('orden_id')->unsigned();
-          $table->foreign('orden_id')->references('id')->on('ordenes');
+          $table->foreign('orden_id')->references('id')->on('ordenes')->onDelete('cascade');
           $table->integer('producto_id')->unsigned();
           $table->foreign('producto_id')->references('id')->on('productos');
           $table->integer('cantidad_producto');

@@ -25,10 +25,11 @@
       <div class="container">
         <div class="row">
           <div class="col d-flex flex-row">
-            <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('OneTech/images/phone.png')}}" alt=""></div>+503 7928-5167</div>
+            <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('OneTech/images/phone.png')}}" alt=""></div>+503 7999-5117</div>
             <div class="top_bar_contact_item"><div class="top_bar_icon"><img src="{{asset('OneTech/images/mail.png')}}" alt=""></div><a href="mailto:panonline503@gmail.com">panonline503@gmail.com</a></div>
             <div class="top_bar_content ml-auto">
               <div class="top_bar_menu">
+                @auth
                 <ul class="standard_dropdown top_bar_dropdown">
                   <li>
                     <a href="#">Configuracion<i class="fa fa-cogs"></i></a>
@@ -39,12 +40,14 @@
                       </li>
                       <li><a href="{{route('misordenes')}}">Ordenes Pendientes</a></li>
                       <li>
-                        <a href="{{route('cambiarPass',['id'=> Auth::user()->id])}}"> Cambiar Contraseña</a>
+                        <a href="{{route('cambiarPass')}}"> Cambiar Contraseña</a>
                       </li>
                     </ul>
                   </li>
                 </ul>
+                @endauth
               </div>
+
               <div class="top_bar_user">
                 <div class="user_icon"><img src="{{asset('OneTech/images/user.svg')}}" alt=""></div>
                 @auth
@@ -118,12 +121,10 @@
                         <span class="custom_dropdown_placeholder clc">Categorias</span>
                         <i class="fas fa-chevron-down"></i>
                         <ul class="custom_list clc">
-                          <li><a class="clc" href="#">All Categories</a></li>
-                          <li><a class="clc" href="#">Computers</a></li>
-                          <li><a class="clc" href="#">Laptops</a></li>
-                          <li><a class="clc" href="#">Cameras</a></li>
-                          <li><a class="clc" href="#">Hardware</a></li>
-                          <li><a class="clc" href="#">Smartphones</a></li>
+                          @foreach($categorias as $cat)
+                          <li><a class="clc" >{{$cat->nombre_categoria}}</a></li>
+                            @endforeach
+                              </ul>
                         </ul>
                       </div>
                     </div>
@@ -138,10 +139,10 @@
           <div class="col-lg-4 col-9 order-lg-3 order-2 text-lg-left text-right">
             <div class="wishlist_cart d-flex flex-row align-items-center justify-content-end">
               <div class="wishlist d-flex flex-row align-items-center justify-content-end">
-                <div class="wishlist_icon"><img src="{{asset('OneTech/images/heart.png')}}" alt=""></div>
+                <div class="wishlist_icon"><img src="" alt=""></div>
                 <div class="wishlist_content">
-                  <div class="wishlist_text"><a href="#">Lista de Deseos</a></div>
-                  <div class="wishlist_count">115</div>
+                  <div class="wishlist_text"><a href="#"></a></div>
+                  <div class="wishlist_count"></div>
                 </div>
               </div>
 
@@ -149,8 +150,8 @@
               <div class="cart">
                 <div class="cart_container d-flex flex-row align-items-center justify-content-end">
                   <div class="cart_icon">
-                    <img src="{{asset('OneTech/images/cart.png')}}" alt="">
-                    <div class="cart_count"><span id='conteo'>{{Session::has('carrito') ? Session::get('carrito')->cantidadTotal : '0'}}</span></div>
+                    <a href="{{url('/vercarrito')}}"><img src="{{asset('OneTech/images/cart.png')}}" alt=""></a>
+                    <a href="{{url('/vercarrito')}}"><div class="cart_count"><span id='conteo'>{{Session::has('carrito') ? Session::get('carrito')->cantidadTotal : '0'}}</span></div></a>
                   </div>
                   <div class="cart_content">
                     <div class="cart_text"><a href="{{url('/vercarrito')}}">Carro</a></div>
@@ -358,10 +359,10 @@
         <div class="col-lg-3 footer_col">
           <div class="footer_column footer_contact">
             <div class="logo_container">
-              <div class="logo"><a href="#">OneTech</a></div>
+              <div class="logo"><a href="#"></a></div>
             </div>
-            <div class="footer_title">Got Question? Call Us 24/7</div>
-            <div class="footer_phone">+38 068 005 3570</div>
+            <div class="footer_title"></div>
+            <div class="footer_phone">+503 7777 7777</div>
             <div class="footer_contact_text">
               <p>17 Princess Road, London</p>
               <p>Grester London NW18JR, UK</p>

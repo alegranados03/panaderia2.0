@@ -5,5 +5,5 @@ Cambiar Contraseña
 @endsection
 
 @section('content')
-
+@include('administracion.usuarios.partials.formCambioPass')
 @endsection

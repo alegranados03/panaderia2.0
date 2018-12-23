@@ -162,14 +162,14 @@ Bienvenid@ al Sistema de Panaderia Lila
 				<div class="col-12 col-md-4 col-xl-3" name="procedimientos">
 					<div class="row">
 						<div class="col-12">
-								<a href="#" class="btn btn-block btn-light">
+								<a href="{{route('mesas.index')}}" class="btn btn-block btn-light">
 									<i class="fa fa-cutlery" style="font-size: 150px;color: black;"></i>
 								</a>
 						</div>
 					</div>
 					<div class="row">
 						<div class="col-12">
-							<a href="#" class="btn btn-block btn-light" style="color: black;"><h3>Mesas</h3>
+							<a href="{{route('mesas.index')}}" class="btn btn-block btn-light" style="color: black;"><h3>Mesas</h3>
 							</a>
 						</div>
 					</div>

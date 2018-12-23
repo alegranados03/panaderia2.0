@@ -42,6 +42,12 @@ Detalle Usuario
 			{!! Form::label('direccion','Direccion') !!}
 			{!! Form::text('direccion',null,['class'=> 'form-control','readonly', 'style' => 'resize:none']) !!}
 	    </div>
+
+			<div class="col-md-3">
+			{!! Form::label('tarjeta_credito','Numero de Tarjeta:') !!}
+			{{ Form::text('tarjeta_credito',null,['class'=> 'form-control','placeholder' => 'XXXX-XXXX-XXXX-XXXX','readonly']) }}
+				</div>
+
 	</div>
 	<br/>
 {{Form::close()}}

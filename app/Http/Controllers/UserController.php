@@ -154,16 +154,15 @@ class UserController extends Controller
   }
 
 
-  public function editPassword($id)
+  public function editPassword()
   {
     try{
       if(auth()->user()->isCliente()){
-        $user = User::findOrFail($id);
         $categorias = Categoria::all();
-        return view('cliente.cambiarPassword',compact('user','categorias'));
+        return view('cliente.cambiarPassword',compact('categorias'));
       }else{
-        $user = User::findOrFail($id);
-        return view($this->path.'editarPassword',compact('user'));
+
+        return view($this->path.'editarPassword');
       }
     }catch(Exception $e){
       return "Error al intentar modificar al Usuario".$e->getMessage();
@@ -187,24 +186,30 @@ class UserController extends Controller
       $nueva_password=$request->password;
       $user->password=bcrypt($nueva_password);
       $user->save();
-      return redirect()->action('UserController@show',['id' =>$user->id])->with('msj','#');
+        return redirect()->action('TiendaController@miperfil');
+
+
     }else{
       //  return redirect()->action('UserController@show',['id' => $user->id])->with('msj2','La contraseña anterior está incorrecta, intentelo nuevamente');
     }
   }
 
   public function asignarTarjeta(Request $request, $id){
-    
+
+    $this->validate($request,[
+      'tarjeta_credito' => 'nullable|string|max:19|min:19|regex:/^\d{4}-\d{4}-\d{4}-\d{4}$/',
+    ]);
+
     try {
       $user = User::findOrFail($id);
 
       $user->tarjeta_credito = $request->tarjeta_credito;
       $user->update();
-    
+
 
     return redirect()->back()->with('info', 'Asignado Correctamente');
     } catch (Exception $e) {
-      
+
     }
 
   }
@@ -221,6 +226,35 @@ class UserController extends Controller
   }
 
   public function editarPerfilUpdate(Request $request, $id){
+
+    $this->validate($request,[
+      'primerNombre' => 'required|string|max:50|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
+      'segundoNombre' => 'nullable|string|max:50|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
+      'primerApellido' => 'required|string|max:50|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
+      'segundoApellido' => 'nullable|string|max:50|regex:/^([a-zA-ZñÑáéíóúÁÉÍÓÚ_-])+((\s*)+([a-zA-ZñÑáéíóúÁÉÍÓÚ_-]*)*)+$/',
+      'direccion'=>'string|max:100',
+      'tarjeta_credito' => 'nullable|string|max:19|min:19|regex:/^\d{4}-\d{4}-\d{4}-\d{4}$/',
+
+    ]);
+    try{
+      $user=User::findOrFail($id);
+      $user->primerNombre=$request->primerNombre;
+      $user->segundoNombre=$request->segundoNombre;
+      $user->primerApellido=$request->primerApellido;
+      $user->segundoApellido=$request->segundoApellido;
+      $user->tarjeta_credito=$request->tarjeta_credito;
+      $user->email=$request->email;
+      $user->direccion=$request->direccion;
+
+      $user->update();
+        return redirect()->action('TiendaController@miperfil');
+
+    }catch(Exception $e){
+      return back()->with('msj2','Usuario no editado,revise los datos proporcionados');
+    }
+
+
+
 
   }
 

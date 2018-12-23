@@ -81,7 +81,7 @@ class ProductoController extends Controller
     {
       $producto = Producto::findOrFail($id);
       $categorias = Categoria::pluck('nombre_categoria','id')->toArray();
-      
+
       return view($this->path.'show',compact('producto','categorias'));
     }
 
@@ -146,7 +146,9 @@ class ProductoController extends Controller
 
     public function mostrarProductos($id)
     {$categorias=Categoria::all();
-      $productos=Producto::where('categoria_id','=',$id)->get();
+      $productos=Producto::where('categoria_id','=',$id)
+      ->where('stock','>',0)
+      ->get();
         return view('cliente.productos',compact('productos','categorias'));
     }
 

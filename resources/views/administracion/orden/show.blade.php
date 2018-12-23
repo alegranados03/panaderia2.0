@@ -67,7 +67,7 @@ Detalle Orden
 												        	<td>{{$prod->nombre_producto}}</td>
 												        	<td>
 
-																$ {{$prod->precio}}
+																$ {{$prod->total_parcial/$prod->cantidad_producto}}
 												        	</td>
 												        	<td>$ {{$prod->total_parcial}}</td>
 												        </tr>

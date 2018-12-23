@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mesa;
+use App\Orden;
 use Illuminate\Http\Request;
 
 class MesaController extends Controller
@@ -12,9 +13,19 @@ class MesaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     private $path = 'administracion/mesas/';
+
+     //Referencia al middleware
+     public function __construct(){
+       //$this->middleware('auth');
+     }
+
+
     public function index()
     {
-        //
+      $mesas=Mesa::all();
+      return view($this->path.'index',["mesas"=>$mesas]);
     }
 
     /**
@@ -24,7 +35,7 @@ class MesaController extends Controller
      */
     public function create()
     {
-        //
+      return view($this->path.'create');
     }
 
     /**
@@ -35,7 +46,15 @@ class MesaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+          $mesa = new Mesa($request->all());
+          if($mesa->save()){
+            return redirect()->action('MesaController@index');
+          }
+        } catch (Exception $e) {
+
+        }
+
     }
 
     /**
@@ -46,7 +65,13 @@ class MesaController extends Controller
      */
     public function show(Mesa $mesa)
     {
-        //
+
+      $ordenes = Orden::join('mesas','ordenes.mesa_id','=','mesas.id')
+      ->where('ordenes.tipo_orden','=','LOCAL')
+      ->where('ordenes.estado_servicio','=','PENDIENTE')
+      ->where('mesa_id','=',$mesa->id)
+      ->select('ordenes.*','mesas.codigo_mesa')->get();
+      return view($this->path.'show',compact('mesa','ordenes'));
     }
 
     /**
@@ -57,7 +82,7 @@ class MesaController extends Controller
      */
     public function edit(Mesa $mesa)
     {
-        //
+        return view($this->path.'edit',compact('mesa'));
     }
 
     /**
@@ -69,7 +94,17 @@ class MesaController extends Controller
      */
     public function update(Request $request, Mesa $mesa)
     {
-        //
+      try {
+        $mesa->codigo_mesa=$request->codigo_mesa;
+        $mesa->capacidad_personas=$request->capacidad_personas;
+        if($mesa->update()){
+          return redirect()->action('MesaController@index');
+        }
+
+
+      } catch (Exception $e) {
+
+      }
     }
 
     /**
