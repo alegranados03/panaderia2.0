@@ -21,9 +21,8 @@ Detalle Producto
 		</div>
 		<div class="row">
 		<div class="col-md-6">
-			{{ Form::label('tipoProducto','Tipo de Producto') }}
-			{{ Form::select('tipoProducto',
-			['POSTRE' => 'Postre', 'BEBIDA' => 'Bebida'],null,['class'=> 'form-control', 'disabled']) }}
+			{{ Form::label('categoria_id','Tipo de Producto') }}
+			{{ Form::select('categoria_id',$categorias,null,['class'=> 'form-control', 'disabled']) }}
 			</div>
 			</div>
 		<div class="row">

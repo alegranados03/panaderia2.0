@@ -63,3 +63,5 @@ Route::resource('ordenes','OrdenController');
 Route::get('historialLocal','OrdenController@historialLocal')->name('historialLocal');
 Route::get('historialLinea','OrdenController@historialLinea')->name('historialLinea');
 Route::get('pendienteLinea','OrdenController@pendienteLinea')->name('pendienteLinea');
+Route::get('agregarDetalle/{id}', 'OrdenController@agregarDetalle')->name('agregarProducto');
+Route::post('agregarDetalleStore/','OrdenController@agregarDetalleStore')->name('agregarProductoStore');

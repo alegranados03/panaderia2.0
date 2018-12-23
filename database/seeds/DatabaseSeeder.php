@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
        $this->call(userDefault::class);
        $this->call(categoriaDefault::class);
        $this->call(MesaDefault::class);
-       $this->call(ProductoSeeder::class);
+       $this->call(productoSeeder::class);
 
     }
 }

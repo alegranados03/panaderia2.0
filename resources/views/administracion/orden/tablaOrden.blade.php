@@ -6,7 +6,12 @@
             <th>Estado de Pago</th>
             <th>Fecha de Creacion</th>
             <th>Mesa</th>
-            <th>Acciones</th>
+            <th>Ver Orden</th>
+            <th>Pagar Orden</th>
+            <th>Editar Orden</th>
+            <th>Agregar Detalles a orden</th>
+            <th>Eliminar Detalles a orden</th>
+            <th>Eliminar Orden</th>
          </tr>
     </thead>
     <tbody>
@@ -17,10 +22,23 @@
             <td>{{$orden->estado_pago}}</td>
             <td>{{$orden->created_at}}</td>
             <td>{{$orden->codigo_mesa}}</td>
-            <td class="center">
+            <td class="center" align="center">
                 <a class="btn btn-info" href="{{route('ordenes.show',['id'=> $orden->id])}}"><i class="fa fa-eye"></i> Ver</a>
-                <a class="btn btn-primary" href="{{route('ordenes.edit',['id'=> $orden->id])}}"><i class="fa fa-edit"></i> Editar</a>
-                <a class="btn btn-danger" href="{{route('ordenes.destroy',['id'=> $orden->id])}}"><i class="fa fa-trash"></i> Deshabilitar</a>
+            </td>
+            <td class="center" align="center">
+                <a class="btn btn-warning" href="{{route('ordenes.destroy',['id'=> $orden->id])}}"><i class="fa fa-check"></i> Pagar Orden</a>
+            </td>
+            <td class="center" align="center">
+                <a class="btn btn-success" href="{{route('ordenes.edit',['id'=> $orden->id])}}"><i class="fa fa-edit"></i> Editar</a>
+            </td>
+            <td class="center" align="center">
+                <a class="btn btn-primary" href="{{route('agregarProducto',['id'=> $orden->id])}}"><i class="fa fa-plus"></i> Agregar Producto</a>
+            </td>
+            <td class="center" align="center">
+                <a class="btn btn-danger" href="{{route('agregarProducto',['id'=> $orden->id])}}"><i class="fa fa-minus"></i> Eliminar Producto</a>
+            </td>
+            <td class="center" align="center">
+                <a class="btn btn-danger" href="{{route('ordenes.destroy',['id'=> $orden->id])}}"><i class="fa fa-trash"></i> Eliminar</a>
             </td>
         </tr>
       @endforeach

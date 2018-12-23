@@ -77,9 +77,12 @@ class ProductoController extends Controller
      * @param  \App\Producto  $producto
      * @return \Illuminate\Http\Response
      */
-    public function show(Producto $producto)
+    public function show($id)
     {
-      return view($this->path.'show',compact('producto'));
+      $producto = Producto::findOrFail($id);
+      $categorias = Categoria::pluck('nombre_categoria','id')->toArray();
+      
+      return view($this->path.'show',compact('producto','categorias'));
     }
 
     /**
