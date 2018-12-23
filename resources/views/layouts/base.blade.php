@@ -26,8 +26,6 @@
   <!-- Custom CSS -->
   <link href="{{asset('dist/css/sb-admin-2.css')}}" rel="stylesheet">
 
-  <!-- Morris Charts CSS -->
-  <link href="{{asset('js/vendor2/morrisjs/morris.css')}}" rel="stylesheet">
 
   <!-- Custom Fonts -->
   <link href="{{asset('js/vendor2/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
@@ -54,7 +52,7 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="/home" style="color: white; font-family: serif; font-size: 50px">Panaderia Lila</a>
+        <a class="navbar-brand" href="/" style="color: white; font-family: serif; font-size: 50px">Panaderia Lila</a>
       </div>
       <!-- /.navbar-header -->
 
@@ -227,10 +225,16 @@
               <a href="{{route('miperfil')}}" style="color: black;font-size: 20px"><i class="fa fa-user"></i> Mi Perfil</a>
             </li>
             <li>
+              <a href="{{route('editarPerfil',['id'=> Auth::user()->id])}}" style="color: black;font-size: 20px"><i class="fa fa-cogs"></i> Editar mi perfil</a>
+            </li>
+            <li>
+              <a href="{{route('cambiarPass',['id'=> Auth::user()->id])}}" style="color: black;font-size: 20px"><i class="fa fa-lock"></i> Cambiar Contraseña</a>
+            </li>
+            <li>
               <a href="{{ route('logout') }}"
               onclick="event.preventDefault();
               document.getElementById('logout-form').submit();" style="color: black;font-size: 20px">
-              <i class="fa fa-power-off"></i> {{ __('Logout') }}
+              <i class="fa fa-power-off"></i> {{ __('Cerrar Sesion') }}
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
               @csrf
@@ -293,7 +297,7 @@
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
-        <h1 class="page-header">@yield('inicio')</h1>
+        <h1 class="page-header" align="center">@yield('inicio')</h1>
       </div>
       <!-- /.col-lg-12 -->
     </div>
@@ -311,10 +315,6 @@
   <!-- Metis Menu Plugin JavaScript -->
   <script src="{{asset('js/vendor2/metisMenu/metisMenu.min.js')}}"></script>
 
-  <!-- Morris Charts JavaScript -->
-  <script src="{{asset('js/vendor2/raphael/raphael.min.js')}}"></script>
-  <script src="{{asset('js/vendor2/morrisjs/morris.min.js')}}"></script>
-  <script src="{{asset('data/morris-data.js')}}"></script>
 
   <!-- Custom Theme JavaScript -->
   <script src="{{asset('dist/js/sb-admin-2.js')}}"></script>

@@ -44,7 +44,7 @@ Route::resource('usuarios','UserController');
 Route::get('/cambiarPass/{idUsuario}','UserController@editPassword')->name('cambiarPass');
 Route::post('/actualizarPassword/{idUsuario}','UserController@actualizarPassword')->name('actualizarPassword');
 Route::post('/asignarTarjeta/{id}', 'UserController@asignarTarjeta')->name('asignarTarjeta');
-
+Route::get('/editarPerfil/{idUsuario}','UserController@editarPerfil')->name('editarPerfil');
 
 //rutas del carrito
 Route::get('/agregar-carrito/{idProducto}','ProductoController@agregarACarrito')->name('agregar');

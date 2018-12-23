@@ -34,7 +34,13 @@
                     <a href="#">Configuracion<i class="fa fa-cogs"></i></a>
                     <ul>
                       <li><a href="{{route('miperfil')}}">Perfil de Usuario</a></li>
+                      <li>
+                        <a href="{{route('editarPerfil',['id'=> Auth::user()->id])}}">Editar mi perfil</a>
+                      </li>
                       <li><a href="{{route('misordenes')}}">Ordenes Pendientes</a></li>
+                      <li>
+                        <a href="{{route('cambiarPass',['id'=> Auth::user()->id])}}"> Cambiar Contraseña</a>
+                      </li>
                     </ul>
                   </li>
                 </ul>

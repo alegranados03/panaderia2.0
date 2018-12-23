@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 use Caffeinated\Shinobi\Models\Role;
 use App\Http\Requests\UserRequest;
 use App\User;
+use App\Categoria;
 use Mail;
 
 class UserController extends Controller
@@ -156,8 +157,14 @@ class UserController extends Controller
   public function editPassword($id)
   {
     try{
-      $user = User::findOrFail($id);
-      return view($this->path.'editarPassword',compact('user'));
+      if(auth()->user()->isCliente()){
+        $user = User::findOrFail($id);
+        $categorias = Categoria::all();
+        return view('cliente.cambiarPassword',compact('user','categorias'));
+      }else{
+        $user = User::findOrFail($id);
+        return view($this->path.'editarPassword',compact('user'));
+      }
     }catch(Exception $e){
       return "Error al intentar modificar al Usuario".$e->getMessage();
     }
@@ -199,6 +206,21 @@ class UserController extends Controller
     } catch (Exception $e) {
       
     }
+
+  }
+
+  public function editarPerfil($id){
+    if(auth()->user()->isCliente()){
+      $user = User::findOrFail($id);
+      $categorias = Categoria::all();
+      return view('cliente.editarPerfil',compact('user','categorias'));
+    }else{
+      $user = User::findOrFail($id);
+      return view($this->path.'editarPerfil',compact('user'));
+    }
+  }
+
+  public function editarPerfilUpdate(Request $request, $id){
 
   }
 
