@@ -146,7 +146,13 @@ class PagoController extends Controller
     }
 
     public function vistaPago($id){
-      return view('administracion.orden.pagoOrden');
+        $orden = $id;
+        $detallesOrden = DetalleOrden::where('orden_id','=',$id)->get();
+        $total=0;
+        foreach ($detallesOrden as $key => $value) {
+                $total+= $value->total_parcial;
+        }
+        return view('administracion.orden.pagoOrden',compact('orden','total'));
     }
 
 
