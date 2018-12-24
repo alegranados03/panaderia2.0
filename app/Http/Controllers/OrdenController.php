@@ -199,6 +199,10 @@ class OrdenController extends Controller
                                 }
                                 $detallesObj = DetalleOrden::findOrFail($idDetalle);
                                 $detallesObj->cantidad_producto+=$request[$request->productos[$i]];
+                                //disminuye valor en stock del producto
+                                $value->stock-=$request[$request->productos[$i]];
+                                $value->update();
+                                //fin
 
                                 $detallesObj->total_parcial += $request[$request->productos[$i]]*$value->precio;
                                 $detallesObj->update();
@@ -210,6 +214,10 @@ class OrdenController extends Controller
                                 $detalle->total_parcial = $request[$request->productos[$i]]*$value->precio;
                                 if(!is_null($request[$request->productos[$i]])){
                                     $detalle->save();
+                                    //disminuye valor en stock del producto
+                                    $value->stock-=$request[$request->productos[$i]];
+                                    $value->update();
+                                    //fin
                                 }else{
                                     return redirect()->back();
                                 }
@@ -256,10 +264,14 @@ class OrdenController extends Controller
           if($sobre>0){
             $detalle->cantidad_producto=$sobre;
             $detalle->total_parcial=$sobre * $producto->precio;
+            $producto->stock+=$request[$prod];
             $detalle->update();
+            $producto->update();
           }
           if($sobre==0){
             $detalle->delete();
+            $producto->stock+=$request[$prod];
+            $producto->update();
             }
         } //fpreach
 return redirect()->action('OrdenController@index');

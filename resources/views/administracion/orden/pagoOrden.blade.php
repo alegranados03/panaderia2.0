@@ -11,13 +11,13 @@ Pagar Orden
             <div class="panel-heading" align="center" style="font-size: 30px;font-weight: bold;">
                 <div class="row">
                 	<div class="col-md-12">
-                	    Crear Nuevo Usuario                		
-                	</div>                	
+                	    Ingresar Pago
+                	</div>
                 </div>
             </div>
             <!-- /.panel-heading -->
             <div class="panel-body">
-            	{{ Form::open(['route' => 'usuarios.store', 'method' => 'POST','class' => 'form-group', 'autocomplete' => 'off' ])}}
+            	{{ Form::open(['route' => ['pagoLocal',$orden], 'method' => 'POST','class' => 'form-group', 'autocomplete' => 'off' ])}}
 
             	@include('administracion.orden.partials.formAgregarPago')
 
@@ -39,9 +39,11 @@ $(document).ready(function(){
     	document.getElementById('campoTarjeta').style.display = "none";
     	document.getElementById('campoTarjeta2').style.display = "none";
     	$("#cantidadRecibida2").attr('required', '');
+      $("#campoTarjeta2").removeAttr('required');
         $("#cosa2").prop('checked',false);
         $("#cosa").prop('disabled',true);
         $("#cosa2").prop('disabled',false);
+
     });
     $("#cosa2").click(function(){
     	document.getElementById('cantidadRecibida').style.display = "none";
@@ -50,16 +52,17 @@ $(document).ready(function(){
     	document.getElementById('cantidadCambio2').style.display = "none";
     	document.getElementById('campoTarjeta').style.display = "block";
     	document.getElementById('campoTarjeta2').style.display = "block";
-    	$("#cantidadRecibida2").removeAttr('required');
+      $("#campoTarjeta2").attr('required','');
+      $("#cantidadRecibida2").removeAttr('required');
+
         $("#cosa").prop('checked',false);
         $("#cosa2").prop('disabled',true);
         $("#cosa").prop('disabled',false);
+
     });
-
-
     $("#cosa").prop('checked',true);
     $("#cosa").prop('disabled',true);
-    $("#cantidadRecibida2").attr('required', 'true');
+    $("#cantidadRecibida2").attr('required', '');
 });
 </script>
 <script>
@@ -67,7 +70,7 @@ $(document).ready(function(){
     $("#cantidadRecibida2").change(function(){
     	var recibido = document.getElementById('cantidadRecibida2').value;
     	var total = document.getElementById('total_cancelar').value;
-    	document.getElementById('cantidadCambio2').value = total-recibido;
+    	document.getElementById('cantidadCambio2').value = recibido-total;
     });
 });
 </script>

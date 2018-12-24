@@ -27,7 +27,7 @@
 <div class="row">
 	<div class="col-md-3">
 		{{ Form::label('tarjeta_credito','No de Tarjeta:',['id' => 'campoTarjeta','style' =>'display:none']) }}
-		{{ Form::text('tarjeta_credito',null,['class'=>'form-control','id' => 'campoTarjeta2','placeholder' => 'XXXX-XXXX-XXXX-XXXX','style' =>'display:none']) }}
+		{{ Form::text('tarjeta_credito2',null,['class'=>'form-control','id' => 'campoTarjeta2','placeholder' => 'XXXX-XXXX-XXXX-XXXX','style' =>'display:none']) }}
 	</div>
 </div>
 <br/>

@@ -159,5 +159,53 @@ class PagoController extends Controller
 
     public function pagoLocal(Request $request, $id){
 
+      try {
+        $orden=Orden::findOrFail($id);
+        $pago=new Pago();
+        $pago->orden_id=$id;
+
+        if($orden->estado_pago!="CANCELADA"){   //revisa que la orden no haya sido cancelada con anterioridad
+
+          if($request->recibido2!=null && $request->cambio!=null){ //valida que se haya ingresado cantidad de dinero (efectivo)
+            if($request->recibido2>=$request->total_cancelar){
+                $pago->tipo_pago="Efectivo";
+                $pago->total_cancelar=$request->total_cancelar;
+                $pago->recibido=$request->recibido2;
+                $pago->cambio=$request->cambio;
+
+            }else{
+              return redirect()->back()->with('');
+            }
+          }else if($request->tarjeta_credito2!=null && strlen($request->tarjeta_credito2)==19){ //verifica tamaño de tarjeta de credito
+                $pago->tipo_pago="Tarjeta Crédito";
+                $pago->total_cancelar=$request->total_cancelar;
+                $pago->recibido=$request->total_cancelar;
+                $pago->tarjeta_credito=$request->tarjeta_credito2;
+                $pago->cambio="0.0";
+              }else{
+                return redirect()->back()->with('');
+              }
+
+
+            if($pago->save()){ //si el pago se guarda, cambia el estado de la orden
+              $orden->estado_servicio="ENTREGADA";
+              $orden->estado_pago="CANCELADA";
+              $orden->save();
+              return redirect()->action('OrdenController@index');
+            }
+          }else{
+          return redirect()->back()->with('');
+           }
+
+
+
+      } catch (Exception $e) {
+
+      }
+
+
+
+
+
     }
 }
