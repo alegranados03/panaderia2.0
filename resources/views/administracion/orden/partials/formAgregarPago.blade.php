@@ -2,28 +2,39 @@
 <div class="row">
 	<div class="col-md-6">
 		{{ Form::label('tipo_pago','Tipo de Pago:') }}
-		{{ Form::select('tipo_pago',['Efectivo'=>'Efectivo', 'Tarjeta Crédito'=>'Tarjeta Credito'],null,['class'=> 'form-control','placeholder' =>'Seleccione...','required'])}}
+		<br/>
+		<label for="tipo_pago">Efectivo</label>
+		{{ Form::checkbox('cosa', '1', false, ['id'=> 'cosa'] )}}
+		<label for="tipo_pago">Tarjeta de Credito</label>
+		{{ Form::checkbox('cosa2', '2', false, ['id'=> 'cosa2'] )}}
 	</div>
 </div>
 <br/>
 <div class="row">
-	<div class="col-md-6">
-		{{ Form::label('recibido','Cantidad Recibida:') }}
-		{{ Form::number('recibido',null,['class' => 'form-control','min' =>'0.01','step' => '0.01'])}}
+	<div class="col-md-3">
+		{{ Form::label('recibido','Cantidad Recibida:',['id' => 'cantidadRecibida']) }}
+		{{ Form::number('recibido2',null,['class' => 'form-control','min' =>'0.01','step' => '0.01','id'=>'cantidadRecibida2'])}}
 	</div>
 </div>
 <br/>
 <div class="row">
-	<div class="col-md-6">
-		{{ Form::label('cambio','Cambio:') }}
-		{{ Form::number('cambio',null,['class' => 'form-control','min' =>'0.01','step' => '0.01'])}}
+	<div class="col-md-3">
+		{{ Form::label('cambio','Cambio:',['id' => 'cantidadCambio']) }}
+		{{ Form::number('cambio',null,['class' => 'form-control','min' =>'0.01','step' => '0.01','readonly','id' => 'cantidadCambio2'])}}
 	</div>
 </div>
 <br/>
 <div class="row">
-	<div class="col-md-6">
+	<div class="col-md-3">
+		{{ Form::label('tarjeta_credito','No de Tarjeta:',['id' => 'campoTarjeta','style' =>'display:none']) }}
+		{{ Form::text('tarjeta_credito',null,['class'=>'form-control','id' => 'campoTarjeta2','placeholder' => 'XXXX-XXXX-XXXX-XXXX','style' =>'display:none']) }}
+	</div>
+</div>
+<br/>
+<div class="row">
+	<div class="col-md-3">
 		{{ Form::label('total_cancelar','Total a Cancelar:') }}
-		{{ Form::number('total_cancelar',$total,['class' => 'form-control','min' =>'0.01','step' => '0.01'])}}
+		{{ Form::number('total_cancelar',$total,['class' => 'form-control','min' =>'0.01','step' => '0.01','readonly','id' => 'total_cancelar'])}}
 	</div>
 </div>
 <br/>
